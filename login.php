@@ -1,11 +1,19 @@
-<!DOCTYPE html>
+<?php
+session_start();
+//Si ya existe sesión redirigir a home
+if (isset($_SESSION['sesion'])) {
+    //redirigir a pagina principal
+    header("Location: index.php");
+}
+$error = isset($_POST['error'])? $_POST['error'] : null;
+?>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- css nuestro -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="CSS/login.css">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- iconos bootstrap -->
@@ -19,9 +27,9 @@
                     <div class="mt-5 mb-2">
                         <h1>Iniciar sesión</h1>                        
                     </div>
-                    <form class="border bg-white" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
+                    <form action="./PHP/verificar.php" method="post" class="border bg-white" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <div class="form-floating mt-4 mb-3"> <!-- label flotante -->
-                            <input type="email" id="email" class="form-control" placeholder="Correo electronico" required>
+                            <input type="email" name="usuario" id="email" class="form-control" placeholder="Correo electronico" required>
                             <label for="email">
                                 <!-- icono email -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -33,7 +41,7 @@
                             <div class="invalid-feedback">Correo incorrecto</div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
+                            <input type="password" name="contrasena" id="password" class="form-control" placeholder="Contraseña" required>
                             <label for="password">
                                 <!-- icono password -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
