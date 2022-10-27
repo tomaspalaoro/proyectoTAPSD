@@ -1,5 +1,6 @@
 <?php
-require("../PHP/prepare.php");
+require "../Conexion.php";
+$pdo = Conexion::getInstance();
 
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
