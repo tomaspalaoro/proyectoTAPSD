@@ -26,10 +26,10 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
             <div class="col d-flex text-center justify-content-center"> <!-- columna inicio de sesion -->
                 <div class="row align-items-center" id="_cajaLogin">
                     <div class="mb-2">
-                        <h1>Iniciar sesión</h1>
+                        <h1>Registro</h1>
                     </div>
 
-                    <form action="./PHP/verificar.php" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
+                    <form action="./PHP/registrar.php" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <div class="form-floating mt-4 mb-3"> <!-- label flotante -->
                             <input type="email" name="usuario" id="email" class="form-control" placeholder="Correo electronico" required>
                             <label for="email">
@@ -52,7 +52,6 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
                                 Contraseña</label>
                             <div class="invalid-feedback">Contraseña incorrecta</div>
                         </div>
-                        <a href="register.php">Registrarme</a>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3 align-items-center"><!-- div de remember y enviar -->
                             <div class="form-check form-switch pe-3">
