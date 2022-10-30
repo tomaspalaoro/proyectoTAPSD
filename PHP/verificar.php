@@ -1,17 +1,14 @@
 <?php
+$ruta_index = '../index.php';
+$usuario = $_POST['usuario'];
+$contrasena = $_POST['contrasena'];
+
 session_start();
 
 require "../Conexion.php";
 $pdo = Conexion::getInstance();
 
-$usuario = $_POST['usuario'];
-$contrasena = $_POST['contrasena'];
-/*
-$_SESSION['sesion'] = $usuario;
-header("Location: ../index.php");
-exit;*/
-
-$sql = "SELECT * from usuario WHERE email = '$usuario'";
+$sql = "SELECT * from tecnico WHERE email = '$usuario'";
 
 # Preparar la consulta y ejecutarla
 $stmt = $pdo->prepare($sql);
@@ -29,10 +26,11 @@ if (password_verify($contrasena, $clave))//Comparar contraseña con hash en la b
     //USUARIO CORRECTO
     $_SESSION['sesion'] = $usuario;
 
-    header("Location: ../index.php");
+    header("Location: $ruta_index");
     exit;
 } else {
-    echo "no furula<br>";
+    //TODO mensaje de error en login
+    echo "No funciona<br>";
     echo "$contrasena<br>";
     echo "$clave";
 }
