@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+/* Contenido Body */
+body {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+h1 {
+    color: black;
+}
+
+/* Navbar */
+.navbar{
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    margin-left: -300px;
+    background-color: black;
+    transition: 0.4s;
+}
+
+.nav-link {
+    font-size: 1.25em;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+    background-color: #ffffff26;
+}
+
+/*Nav dropdown menu*/
+.dropdown-menu {
+    background-color: black;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: #ffffff26;
+}
+
+/*Container custom*/
+.my-container {
+    transition: 0.4s;
+}
+
+.header-container {
+    transition: 0.4s;
+}
+
+/*Formato iconos header*/
+.icon-header {
+    margin-left: 10px;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+/*Navbar*/
+.active-nav {
+    margin-left: 0;
+}
+
+/*Animacion*/
+.active-cont {
+    margin-left: 250px;
+}
+
+/*Boton menu toggler*/
+#menu-btn {
+    background-color: white;
+    color: #fff;
+}
+
+#menu-btn:focus {
+    box-shadow: 0 0 0 0.25rem white;
+}
