@@ -1,4 +1,5 @@
 <?php
+$ruta_registrar = "./PHP/registrar.php";
 session_start();
 //Si ya existe sesión redirigir a home
 if (isset($_SESSION['sesion'])) {
@@ -29,11 +30,11 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
                         <h1>Registrar nuevo TAPSD</h1>
                     </div>
 
-                    <form action="./PHP/registrar.php" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
+                    <form action="<?php echo $ruta_registrar?>" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <label for="usuario">Correo electronico</label><br>
                         <input type="email" id="usuario" name="usuario"><br>
                         <label for="contrasena">Contraseña por defecto</label><br>
-                        <input type="password" id="contrasena" name="contrasena" placeholder="1234"><br>
+                        <input type="password" id="contrasena" name="contrasena" value="1234"><br>
 
                         <button class="btn btn-primary btn-lg" type="submit" name="enviar" value="tecnico">Registrar</button> <!-- enviar form -->
                     </form>
@@ -42,7 +43,7 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
                         <h1>Registrar nuevo Usuario</h1>
                     </div>
 
-                    <form action="./PHP/registrar.php" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
+                    <form action="<?php echo $ruta_registrar?>" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <label for="nombre">Nombre</label><br>
                         <input type="text" id="nombre" name="nombre"><br>
 
