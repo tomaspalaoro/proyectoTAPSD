@@ -1,8 +1,26 @@
 <?php
 $ruta_form = "./tecnico.php";
-$nombre = "Maria";
-$apellido = "Perez";
 require("PHP/auth.php");
+
+require "./Conexion.php";
+$pdo = Conexion::getInstance();
+
+$email = isset($_SESSION['sesion']) ? $_SESSION['sesion'] : null;
+
+//RECUPERA LOS DATOS DEL PROFESOR A PARTIR DE SU EMAIL
+$sql = "SELECT * from tecnico WHERE email = '$email'";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+$nombre = "";
+$apellido = "";
+//RECORRE LOS DATOS Y LOS ASIGNA A VARIABLES
+$tecnico = $stmt->fetchAll();
+foreach ($tecnico as $row) {
+    $nombre = isset($row['nombre']) ? $row['nombre'] : null;
+    $apellido = isset($row['apellido']) ? $row['apellido'] : null;
+    $telefono = isset($row['telefono']) ? $row['telefono'] : null;
+}
 ?>
 <html lang="es">
 <head>
@@ -26,7 +44,7 @@ require("PHP/auth.php");
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://media.istockphoto.com/vectors/nurse-vector-icon-vector-id949223466?k=20&m=949223466&s=170667a&w=0&h=lFOPbcP_zC_1GB-003byIBtd9kyXBv4ZFXFBo-nxjLg=">
-                    <span class="font-weight-bold">Nombre</span><span class="text-black-50">correo@torrealedua.org</span><span> </span></div>
+                    <span class="font-weight-bold">Nombre</span><span class="text-black"><?php echo $email; ?></span><span> </span></div>
             </div>
             <div class="col-md-5 border-right bg-white">
                 <div class="p-3 py-5">
@@ -39,13 +57,11 @@ require("PHP/auth.php");
                             <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value="<?php echo $apellido; ?>"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" value=""></div>
-                            <div class="col-md-12"><label class="labels">Dirección Linea 1</label><input type="text" class="form-control" value=""></div>
-                            <div class="col-md-12"><label class="labels">Dirección Linea 2</label><input type="text" class="form-control" value=""></div>
+                            <div class="col-md-12"><label class="labels">Correo electrónico</label><input type="text" class="form-control" value="<?php echo $email; ?>"></div>
+                            <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" value="<?php echo $telefono ?>"></div>
                             <div class="col-md-12"><label class="labels">Codigo Postal</label><input type="text" class="form-control" value=""></div>
                             <div class="col-md-12"><label class="labels">Provincia</label><input type="text" class="form-control" value=""></div>
                             <div class="col-md-12"><label class="labels">Ciudad</label><input type="text" class="form-control" value=""></div>
-                            <div class="col-md-12"><label class="labels">Correo electrónico</label><input type="text" class="form-control" value=""></div>
                             <div class="col-md-12"><label class="labels">Estudios</label><input type="text" class="form-control" value=""></div>
                         </div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Editar perfil</button></div>
