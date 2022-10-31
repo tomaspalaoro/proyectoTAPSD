@@ -1,7 +1,7 @@
 <?php
 $ruta_index = '../index.php';
-$usuario = $_POST['usuario'];
-$contrasena = $_POST['contrasena'];
+$usuario = isset($_POST['usuario']) ? $_POST['usuario'] : null;
+$contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : null;
 
 session_start();
 
