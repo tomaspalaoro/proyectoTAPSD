@@ -12,7 +12,7 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Admin</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- css nuestro -->
@@ -25,6 +25,7 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
     <div id="_fondo">
         <div class="container bg-light h-100"> <!-- contenedor principal -->
             <div class="col d-flex text-center justify-content-center"> <!-- columna inicio de sesion -->
+                <h1>CONTROL ADMINISTRADOR</h1>
                 <div class="row align-items-center" id="_cajaLogin">
                     <div class="mb-2">
                         <h1>Registrar nuevo TAPSD</h1>
@@ -46,6 +47,10 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
                     <form action="<?php echo $ruta_registrar?>" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <label for="nombre">Nombre</label><br>
                         <input type="text" id="nombre" name="nombre"><br>
+                        <label for="apellido1">Primer apellido</label><br>
+                        <input type="text" id="apellido1" name="apellido1"><br>
+                        <label for="apellido2">Segundo apellido</label><br>
+                        <input type="text" id="apellido2" name="apellido2"><br>
 
                         <button class="btn btn-primary btn-lg" type="submit" name="enviar" value="usuario">Registrar</button> <!-- enviar form -->
                     </form>

@@ -53,7 +53,7 @@ if (isset($_SESSION['sesion'])) {
                                 Contraseña</label>
                             <div class="invalid-feedback">Contraseña incorrecta</div>
                         </div>
-                        <a href="admin.php">Registrarme</a>
+                        <a href="admin.php">Panel admin</a>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3 align-items-center"><!-- div de remember y enviar -->
                             <div class="form-check form-switch pe-3">
