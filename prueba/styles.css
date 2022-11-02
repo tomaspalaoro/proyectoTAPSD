@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
+    color: black;
 }
 
 /* Contenido Body */
@@ -12,7 +12,13 @@ body {
 }
 
 h1 {
-    color: black;
+    color: #04fcc4;
+}
+
+/*Logo sidebar*/
+#menu-logo {
+    width: 150px;
+    height: 130px;
 }
 
 /* Navbar */
@@ -21,29 +27,36 @@ h1 {
     height: 100vh;
     position: fixed;
     margin-left: -300px;
-    background-color: black;
+    border: #54acfb 5px;
+    border-right-style: solid;
+    background-color: white;
     transition: 0.4s;
 }
 
 .nav-link {
-    font-size: 1.25em;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.custom-color {
+    color: #54acfb;
 }
 
 .nav-link:active,
 .nav-link:focus,
 .nav-link:hover {
-    background-color: #ffffff26;
+    background-color: white;
 }
 
 /*Nav dropdown menu*/
 .dropdown-menu {
-    background-color: black;
+    background-color: white;
 }
 
 .dropdown-item:active,
 .dropdown-item:focus,
 .dropdown-item:hover {
-    background-color: #ffffff26;
+    background-color: white;
 }
 
 /*Container custom*/
@@ -76,7 +89,7 @@ h1 {
 /*Boton menu toggler*/
 #menu-btn {
     background-color: white;
-    color: #fff;
+    color: black;
 }
 
 #menu-btn:focus {
