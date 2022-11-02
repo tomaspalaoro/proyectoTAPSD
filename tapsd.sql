@@ -1,6 +1,6 @@
 /*
-SQLyog Community
-MySQL - 10.4.8-MariaDB : Database - tapsd
+SQLyog Community v13.1.9 (64 bit)
+MySQL - 10.4.24-MariaDB : Database - tapsd
 *********************************************************************
 */
 
@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS `tecnico`;
 
 CREATE TABLE `tecnico` (
   `email` char(100) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pass` varchar(60) COLLATE utf8_spanish_ci DEFAULT NULL,
   `nombre` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellido_1` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellido_2` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -77,6 +77,10 @@ CREATE TABLE `tecnico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `tecnico` */
+
+insert  into `tecnico`(`email`,`pass`,`nombre`,`apellido_1`,`apellido_2`,`telefono`,`token`,`token_date`,`primer_login`,`admin`,`ciudad`,`provincia`,`avatar`) values 
+('admin@admin','$2y$10$bo2NlHA8E5wAFZzq3.z.0uWGTxDh9QRdlcE6KOgA7JmNiTeaslcJi',NULL,NULL,NULL,NULL,NULL,NULL,1,1,NULL,NULL,NULL),
+('tomas@prueba','$2y$10$w7H0v1iocAWP/rHEAOhNoenNai8ue2bs74UVU3Z/zpgW7W.m24wQy',NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL);
 
 /*Table structure for table `usuario` */
 
