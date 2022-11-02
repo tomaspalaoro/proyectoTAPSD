@@ -6,7 +6,7 @@ class Conexion{
     private function __construct()
     {
         $host = 'localhost';
-        $dbname = 'prueba';
+        $dbname = 'tapsd';
         $user = 'root';
         $pass = '';
         try {
