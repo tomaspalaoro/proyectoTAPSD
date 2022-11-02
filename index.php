@@ -1,14 +1,14 @@
 
 <?php
-$ruta_logout = "./PHP/logout.php";
-$ruta_tecnico = "./tecnico.php";
-
+include ("PHP/variables.inc.php");
 require("PHP/auth.php");
 ?>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>SideBarHeader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="IMG/favicon.ico">
+    <title>Inicio</title>
     <!--Bootstap 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@ require("PHP/auth.php");
             <a href="#" class="nav-link pl-4 custom-color">Tareas</a>
         </li>
         <li class="nav-item w-100">
-            <a href="#" class="nav-link pl-4 custom-color">Perfil</a>
+            <a href="<?php echo ruta_tecnico ?>" class="nav-link pl-4 custom-color">Perfil</a>
         </li>
         <!--Si eres admin-->
         <li class="nav-item w-100">
@@ -64,8 +64,7 @@ require("PHP/auth.php");
 </header>
 <!--Panel de control-->
 <section class="p-4 my-container">
-    <div><button class="btn-primary"><a href="<?php echo $ruta_tecnico ?>">Panel perfil tecnico</a></button></div>
-    <div id="logout"><button class="btn btn-danger"><a href="<?php echo $ruta_logout ?>">Cerrar sesión</a></button></div>
+    <div id="logout"><button class="btn btn-danger"><a href="<?php echo ruta_logout ?>">Cerrar sesión</a></button></div>
     <h1>Panel De Control</h1>
     <!--Grid-->
     <p class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam facilis inventore harum, architecto libero recusandae porro doloremque sunt cum consectetur, autem, vitae ea nihil sapiente voluptas at aut suscipit eos? Sapiente quam culpa aliquam

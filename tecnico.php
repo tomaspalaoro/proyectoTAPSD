@@ -1,5 +1,5 @@
 <?php
-$ruta_form = "./tecnico.php";
+include ("PHP/variables.inc.php");
 require("PHP/auth.php");
 
 require "./Conexion.php";
@@ -26,6 +26,7 @@ foreach ($tecnico as $row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="IMG/favicon.ico">
     <title>Perfil de tecnico</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -69,7 +70,7 @@ foreach ($tecnico as $row) {
         <!--Parte Superior Izquierda-->
         <div class="col">
             <button class="btn my-4" id="menu-btn"><img class="icon-header" src="IMG/icon-navbar.png" alt="Button"></button>
-            <a href="#"><img class="icon-header" src="IMG/icons8-home-24.png" alt="Home"></a>
+            <a href="<?php echo ruta_index ?>"><img class="icon-header" src="IMG/icons8-home-24.png" alt="Home"></a>
         </div>
         <!--Divisor-->
         <div class="col-md-auto">
@@ -98,7 +99,7 @@ foreach ($tecnico as $row) {
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Datos del perfil</h4>
                     </div>
-                    <form action="<?php echo $ruta_form ?>" name="miForm" method="POST">
+                    <form action="<?php echo ruta_tecnico ?>" name="miForm" method="POST">
                         <div class="row mt-2">
                             <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" value="<?php echo $nombre; ?>"></div>
                             <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value="<?php echo $apellido; ?>"></div>
