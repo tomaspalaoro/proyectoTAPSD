@@ -1,5 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<?php
+$ruta_logout = "./PHP/logout.php";
+$ruta_tecnico = "./tecnico.php";
+
+require("PHP/auth.php");
+?>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>SideBarHeader</title>
@@ -58,6 +64,8 @@
 </header>
 <!--Panel de control-->
 <section class="p-4 my-container">
+    <div><button class="btn-primary"><a href="<?php echo $ruta_tecnico ?>">Panel perfil tecnico</a></button></div>
+    <div id="logout"><button class="btn btn-danger"><a href="<?php echo $ruta_logout ?>">Cerrar sesión</a></button></div>
     <h1>Panel De Control</h1>
     <!--Grid-->
     <p class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam facilis inventore harum, architecto libero recusandae porro doloremque sunt cum consectetur, autem, vitae ea nihil sapiente voluptas at aut suscipit eos? Sapiente quam culpa aliquam

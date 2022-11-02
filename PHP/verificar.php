@@ -1,30 +1,24 @@
 <?php
+$ruta_index = '../index.php';
+$usuario = isset($_POST['usuario']) ? $_POST['usuario'] : null;
+$contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : null;
+
 session_start();
 
-//require("./prepare.php");
+require "../Conexion.php";
+$pdo = Conexion::getInstance();
 
-$usuario = $_POST['usuario'];
-$contrasena = $_POST['contrasena'];
-
-$_SESSION['sesion'] = $usuario;
-header("Location: ../index.php");
-exit;
-
-
-/*
-
-//TODO CONSULTA QUE VERIFICA SI EXISTE PERSONAL CON EL EMAIL Y CLAVE INTRODUCIDA
-//$sql = "SELECT * from personal WHERE email = '$usuario'";
+$sql = "SELECT * from tecnico WHERE email = '$usuario'";
 
 # Preparar la consulta y ejecutarla
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
 //RECORRE LOS DATOS Y LOS ASIGNA A VARIABLES
-$profe = $stmt->fetchAll();
+$u = $stmt->fetchAll();
 
-foreach ($profe as $row) {
-    $clave = isset($row['clave']) ? $row['clave'] : null;
+foreach ($u as $row) {
+    $clave = isset($row['pass']) ? $row['pass'] : null;
 }
 
 if (password_verify($contrasena, $clave))//Comparar contraseña con hash en la base de datos
@@ -32,14 +26,11 @@ if (password_verify($contrasena, $clave))//Comparar contraseña con hash en la b
     //USUARIO CORRECTO
     $_SESSION['sesion'] = $usuario;
 
-    header("Location: ../index.php");
+    header("Location: $ruta_index");
     exit;
 } else {
-    //TODO USUARIO INCORRECTO
-
-    ?>
-    <form name="myform" method="post" action="../HTML/login.php">
-        <input type="hidden" name="error" value="True"> <!-- Envia error true a login -->
-        <script language="JavaScript">document.myform.submit();</script></form> <!-- Form se envía automaticamente -->
-    <?php
-}*/
+    //TODO mensaje de error en login
+    echo "No funciona<br>";
+    echo "$contrasena<br>";
+    echo "$clave";
+}

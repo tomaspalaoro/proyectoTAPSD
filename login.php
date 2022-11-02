@@ -1,11 +1,12 @@
 <?php
+$ruta_verificar = "./PHP/verificar.php";
+
 session_start();
 //Si ya existe sesión redirigir a home
 if (isset($_SESSION['sesion'])) {
     //redirigir a pagina principal
     header("Location: index.php");
 }
-$error = isset($_POST['error'])? $_POST['error'] : null;
 ?>
 <html lang="es">
 <head>
@@ -29,7 +30,7 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
                         <h1>Iniciar sesión</h1>
                     </div>
 
-                    <form action="./PHP/verificar.php" method="post" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
+                    <form action="<?php echo $ruta_verificar ?>" method="POST" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <div class="form-floating mt-4 mb-3"> <!-- label flotante -->
                             <input type="email" name="usuario" id="email" class="form-control" placeholder="Correo electronico" required>
                             <label for="email">
@@ -52,13 +53,14 @@ $error = isset($_POST['error'])? $_POST['error'] : null;
                                 Contraseña</label>
                             <div class="invalid-feedback">Contraseña incorrecta</div>
                         </div>
+                        <a href="admin.php">Panel admin</a>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3 align-items-center"><!-- div de remember y enviar -->
                             <div class="form-check form-switch pe-3">
                                 <input class="form-check-input" type="checkbox" value="remember-me" id="remember-me">
                                 <label class="form-check-label" for="remember-me">Recordarme</label>
                             </div>
-                            <button class="btn btn-primary btn-lg">Entrar</button> <!-- enviar form -->
+                            <button class="btn btn-primary btn-lg" type="submit">Entrar</button> <!-- enviar form -->
                         </div>
                     </form>
                     </div>
