@@ -6,7 +6,7 @@ require "./Conexion.php";
 $pdo = Conexion::getInstance();
 
 $email = isset($_SESSION['sesion']) ? $_SESSION['sesion'] : null;
-
+echo $_SESSION['sesion'];
 //RECUPERA LOS DATOS DEL PROFESOR A PARTIR DE SU EMAIL
 $sql = "SELECT * from tecnico WHERE email = '$email'";
 $stmt = $pdo->prepare($sql);
@@ -35,8 +35,14 @@ foreach ($tecnico as $row) {
     <link rel="stylesheet" href="CSS/tecnico.css">
     <!-- iconos bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- JAVASCRIPT tecnico.js -->
+    
 </head>
 <body>
+
+<input type="hidden" id="sesion" value="<?php echo $_SESSION['sesion'] ?>">
 
 <!--Sidebar-->
 <nav class="navbar navbar-expand d-flex flex-column align-item-start" id="sidebar">
@@ -86,13 +92,14 @@ foreach ($tecnico as $row) {
 <section class="p-4 my-container" id="_fondo">
     <div>
         <h1>Mi Perfil</h1>
+        
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://media.istockphoto.com/vectors/nurse-vector-icon-vector-id949223466?k=20&m=949223466&s=170667a&w=0&h=lFOPbcP_zC_1GB-003byIBtd9kyXBv4ZFXFBo-nxjLg=">
                     <input class="form-control form-control-sm" id="editarFoto" type="file" accept="image/png, image/jpeg, image/jpg"></input>
-                    <span class="font-weight-bold">Nombre</span><span class="text-black"><?php echo $email; ?></span><span> </span></div>
+                    <span class="font-weight-bold">Nombre</span><span class="text-black" id="emailTecnico"><?php echo $email; ?></span><span> </span></div>
             </div>
             <div class="col-md-5 border-right bg-white">
                 <div class="p-3 py-5">
@@ -101,7 +108,7 @@ foreach ($tecnico as $row) {
                     </div>
                     <form action="<?php echo ruta_tecnico ?>" name="miForm" method="POST">
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" value="<?php echo $nombre; ?>"></div>
+                            <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" id="nombreTecnico"></div>
                             <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value="<?php echo $apellido; ?>"></div>
                         </div>
                         <div class="row mt-3">
@@ -109,10 +116,13 @@ foreach ($tecnico as $row) {
                             <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" value="<?php echo $telefono ?>"></div>
                             <div class="col-md-12"><label class="labels">Codigo Postal</label><input type="text" class="form-control" value=""></div>
                             <div class="col-md-12"><label class="labels">Provincia</label><input type="text" class="form-control" value=""></div>
-                            <div class="col-md-12"><label class="labels">Ciudad</label><input type="text" class="form-control" value=""></div>
+                            <div class="col-md-12"><label class="labels">Ciudad</label><input type="text" class="form-control" id="ciudadTecnico"></div>
                             <div class="col-md-12"><label class="labels">Estudios</label><input type="text" class="form-control" value=""></div>
                         </div>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Editar perfil</button></div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Editar perfil</button>
+                            <button class="btn btn-primary profile-button" id="actualizarPerfil" type="button">Actualizar</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -128,6 +138,9 @@ foreach ($tecnico as $row) {
         </div>
     </div>
 </section>
+
+
+
 <!--Script Movimiento Sidebar-->
 <script>
     //Cogemos etiquetas y guarmamos en variables
@@ -147,9 +160,10 @@ foreach ($tecnico as $row) {
     //No permitir edicion en el form
     var f = document.forms['miForm'];
     for(var i=0,fLen=f.length;i<fLen;i++){
-        f.elements[i].readOnly = true;
+        //f.elements[i].readOnly = true;
     }
 </script>
+<script type="text/javascript" src="./JS/tecnico.js"></script>
 <!-- script bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
