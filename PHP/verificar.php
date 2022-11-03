@@ -1,5 +1,5 @@
 <?php
-$ruta_index = '../index.php';
+include ("PHP/variables.inc.php");
 $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : null;
 $contrasena = isset($_POST['contrasena']) ? $_POST['contrasena'] : null;
 
@@ -26,7 +26,7 @@ if (password_verify($contrasena, $clave))//Comparar contraseña con hash en la b
     //USUARIO CORRECTO
     $_SESSION['sesion'] = $usuario;
 
-    header("Location: $ruta_index");
+    header("Location: ".ruta_index);
     exit;
 } else {
     //TODO mensaje de error en login

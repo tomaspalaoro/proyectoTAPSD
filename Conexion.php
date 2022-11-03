@@ -1,16 +1,14 @@
 <?php
-//para conseguir un patrón singleton el constructor debe ser privado, y el objeto se recupera con get Instance
+include ("PHP/variables.inc.php");
+
 class Conexion{
     private static $pdo;
 
     private function __construct()
     {
-        $host = 'localhost';
-        $dbname = 'tapsd';
-        $user = 'root';
-        $pass = '';
+
         try {
-            self::$pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+            self::$pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8", DB_USER, DB_PASS);
             # Para que genere excepciones a la hora de reportar errores.
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {

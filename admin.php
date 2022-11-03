@@ -1,12 +1,7 @@
 <?php
+/*include ("PHP/variables.inc.php");
+require("PHP/auth.php");*/
 $ruta_registrar = "./PHP/registrar.php";
-session_start();
-//Si ya existe sesión redirigir a home
-if (isset($_SESSION['sesion'])) {
-    //redirigir a pagina principal
-    header("Location: index.php");
-}
-$error = isset($_POST['error'])? $_POST['error'] : null;
 ?>
 <html lang="es">
 <head>

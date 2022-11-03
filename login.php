@@ -1,5 +1,5 @@
 <?php
-$ruta_verificar = "./PHP/verificar.php";
+include ("PHP/variables.inc.php");
 
 session_start();
 //Si ya existe sesión redirigir a home
@@ -30,7 +30,7 @@ if (isset($_SESSION['sesion'])) {
                         <h1>Iniciar sesión</h1>
                     </div>
 
-                    <form action="<?php echo $ruta_verificar ?>" method="POST" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
+                    <form action="<?php echo ruta_verificar ?>" method="POST" novalidate> <!-- FORMULARIO, sobreescribe validacion default -->
                         <div class="form-floating mt-4 mb-3"> <!-- label flotante -->
                             <input type="email" name="usuario" id="email" class="form-control" placeholder="Correo electronico" required>
                             <label for="email">
