@@ -41,8 +41,21 @@
             <a href="#"><img class="icon-header" src="img/icons8-toggle-indeterminate-30.png" alt="Noche"></a>
             <a href="#"><img class="icon-header" src="img/icons8-task-48.png" alt="Task"></a>
             <a href="#"><img class="icon-header" src="img/icons8-topic-50.png" alt="Chat"></a>
-            <div id="logout"><button class="btn btn-danger"><a href="PHP/logout.php">Cerrar sesión</a></button></div>
-
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Username <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li align="center" class="d-flex flex-column justify-content-center">
+                                <img id="_imagenPerfil" class="img-thumbnail img-responsive center-block" src="IMG/tecnicoDefaultPic.jpg" />
+                                <a class="change" href="">Editar Perfil</a>
+                                <a href="PHP/logout.php" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>

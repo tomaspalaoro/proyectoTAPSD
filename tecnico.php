@@ -53,7 +53,7 @@ foreach ($tecnico as $row) {
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://media.istockphoto.com/vectors/nurse-vector-icon-vector-id949223466?k=20&m=949223466&s=170667a&w=0&h=lFOPbcP_zC_1GB-003byIBtd9kyXBv4ZFXFBo-nxjLg=">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="IMG/tecnicoDefaultPic.jpg">
                     <input class="form-control form-control-sm" id="editarFoto" type="file" accept="image/png, image/jpeg, image/jpg"></input>
                     <span class="font-weight-bold">Nombre</span><span class="text-black" id="emailTecnico"><?php echo $email; ?></span><span> </span></div>
             </div>
