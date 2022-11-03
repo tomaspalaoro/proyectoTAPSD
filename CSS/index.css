@@ -96,3 +96,9 @@ h1 {
 #menu-btn:focus {
     box-shadow: 0 0 0 0.25rem white;
 }
+
+/*Dropdown*/
+#_imagenPerfil{
+    width: 100px;
+    height: 100px;
+}
