@@ -43,51 +43,8 @@ foreach ($tecnico as $row) {
 
 <input type="hidden" id="sesion" value="<?php echo $_SESSION['sesion'] ?>">
 
-<!--Sidebar-->
-<nav class="navbar navbar-expand d-flex flex-column align-item-start" id="sidebar">
-    <!--Icono web-->
-    <a href="#" class="navbar-brand text-light mt-2">
-        <div class="display-5"><img src="IMG/logo1.png" id="menu-logo" alt="Logo app"></div>
-    </a>
-    <!--Items-->
-    <ul class="navbar-nav d-flex flex-column mt-5 w-100">
-        <li class="nav-item w-100">
-            <a href="#" class="nav-link pl-4 custom-color">Calendario</a>
-        </li>
-        <li class="nav-item w-100">
-            <a href="#" class="nav-link pl-4 custom-color">Llamadas</a>
-        </li>
-        <li class="nav-item w-100">
-            <a href="#" class="nav-link pl-4 custom-color">Tareas</a>
-        </li>
-        <li class="nav-item w-100">
-            <a href="#" class="nav-link pl-4 custom-color">Perfil</a>
-        </li>
-        <!--Si eres admin-->
-        <li class="nav-item w-100">
-            <a href="#" class="nav-link pl-4 custom-color">Administrador</a>
-        </li>
-    </ul>
-</nav>
-<!--Header-->
-<header class="p-2 header-container shadow mb-2 bg-white rounded">
-    <div class="row justify-content-space-between align-items-center">
-        <!--Parte Superior Izquierda-->
-        <div class="col">
-            <button class="btn my-4" id="menu-btn"><img class="icon-header" src="IMG/icon-navbar.png" alt="Button"></button>
-            <a href="<?php echo ruta_index ?>"><img class="icon-header" src="IMG/icons8-home-24.png" alt="Home"></a>
-        </div>
-        <!--Divisor-->
-        <div class="col-md-auto">
-        </div>
-        <!--Parte Superior Derecha-->
-        <div class="col col-lg-3">
-            <a href="#"><img class="icon-header" src="IMG/icons8-toggle-indeterminate-30.png" alt="Noche"></a>
-            <a href="#"><img class="icon-header" src="IMG/icons8-task-48.png" alt="Task"></a>
-            <a href="#"><img class="icon-header" src="IMG/icons8-topic-50.png" alt="Chat"></a>
-        </div>
-    </div>
-</header>
+<div id="navbarsidebar"></div>
+
 <section class="p-4 my-container" id="_fondo">
     <div>
         <h1>Mi Perfil</h1>
@@ -142,17 +99,25 @@ foreach ($tecnico as $row) {
 
 <!--Script Movimiento Sidebar-->
 <script>
-    //Cogemos etiquetas y guarmamos en variables
-    var menu_btn = document.querySelector("#menu-btn")
-    var sidebar = document.querySelector("#sidebar")
-    var container = document.querySelector(".my-container")
-    var header = document.querySelector(".header-container")
-    //Realizamos evento, Animacion sidebar
-    menu_btn.addEventListener("click", () => {
-        sidebar.classList.toggle("active-nav")
-        container.classList.toggle("active-cont")
-        header.classList.toggle("active-cont")
-    })
+    $.get("navbar_sidebar.html", function(data){
+        /*CARGAR NAVBAR Y SIDEBAR*/
+        console.log("a")
+        $("#navbarsidebar").html(data);
+
+
+        /*SIDEBAR*/
+        //Cogemos etiquetas y guarmamos en variables
+        var menu_btn = document.querySelector("#menu-btn")
+        var sidebar = document.querySelector("#sidebar")
+        var container = document.querySelector(".my-container")
+        var header = document.querySelector(".header-container")
+        //Realizamos evento, Animacion sidebar
+        menu_btn.addEventListener("click", () => {
+            sidebar.classList.toggle("active-nav")
+            container.classList.toggle("active-cont")
+            header.classList.toggle("active-cont")
+        })
+    });
 </script>
 
 <script>
