@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: black;
 }
 
 /* Contenido Body */
@@ -13,5 +12,9 @@ body {
 }
 
 h1 {
-    color: var(--color3);
+    /*color: var(--color3);*/
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: var(--colorPrimario) !important;
 }
