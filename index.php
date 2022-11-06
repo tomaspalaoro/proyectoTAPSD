@@ -1,4 +1,3 @@
-
 <?php
 include ("PHP/variables.inc.php");
 require("PHP/auth.php");
