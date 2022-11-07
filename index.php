@@ -91,32 +91,40 @@ $paginaActual = 1;
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="PHP/registrar.php" method="POST" id="form1">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Employee</h4>
+                        <h4 class="modal-title">Añadir Usuario</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
+                            <label>Nombre (*)</label>
+                            <input type="text" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Primer Apellido (*)</label>
+                            <input type="text" name="apellido1" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Segundo Apellido (*)</label>
+                            <input type="text" name="apellido2" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono (*)</label>
+                            <input type="text" name="telefono" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" required>
+                            <input type="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
+                            <label>Dirección</label>
+                            <textarea class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
+                        <input type="submit" class="btn btn-info" name="enviar" value="usuario" form="form1">Añadir
                     </div>
                 </form>
             </div>
@@ -126,32 +134,40 @@ $paginaActual = 1;
     <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="index.php" method="POST">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Employee</h4>
+                        <h4 class="modal-title">Editar Usuario</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
+                            <label>Nombre</label>
+                            <input type="text" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Primer Apellido</label>
+                            <input type="text" name="apellido1" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Segundo Apellido</label>
+                            <input type="text" name="apellido2" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
                             <input type="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
+                            <label>Dirección</label>
+                            <textarea class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
+                        <button type="submit" class="btn btn-info" name="enviar" value="usuario">Editar</button>
                     </div>
                 </form>
             </div>
