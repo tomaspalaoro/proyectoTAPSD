@@ -41,7 +41,7 @@
             <a href="#"><img class="icon-header" src="img/icons8-toggle-indeterminate-30.png" alt="Noche"></a>
             <a href="#"><img class="icon-header" src="img/icons8-task-48.png" alt="Task"></a>
             <a href="#"><img class="icon-header" src="img/icons8-topic-50.png" alt="Chat"></a>
-            <span class="texto-nav">Nombre Apellidos</span>
+            <span id="nombreApellidos" class="texto-nav">Nombre Apellidos</span>
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><img class="icon-header" src="img/tecnicoDefaultPic.jpg" alt="Perfil"></a>
             <ul class="dropdown-menu">
                 <li align="center" class="d-flex flex-column justify-content-center">
@@ -149,3 +149,17 @@
         box-shadow: 0 0 0 0.25rem white;
     }
 </style>
+<!--Script Movimiento Sidebar-->
+<script>
+    //Cogemos etiquetas y guarmamos en variables
+    var menu_btn = document.querySelector("#menu-btn")
+    var sidebar = document.querySelector("#sidebar")
+    var container = document.querySelector(".my-container")
+    var header = document.querySelector(".header-container")
+    //Realizamos evento, Animacion sidebar
+    menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav")
+        container.classList.toggle("active-cont")
+        header.classList.toggle("active-cont")
+    })
+</script>

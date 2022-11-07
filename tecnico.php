@@ -95,29 +95,13 @@ foreach ($tecnico as $row) {
     </div>
     </div>
 </section>
-
-
-
-<!--Script Movimiento Sidebar-->
 <script>
     $.get("navbar_sidebar.html", function(data){
         /*CARGAR NAVBAR Y SIDEBAR*/
         console.log("a")
         $("#navbarsidebar").html(data);
 
-
-        /*SIDEBAR*/
-        //Cogemos etiquetas y guarmamos en variables
-        var menu_btn = document.querySelector("#menu-btn")
-        var sidebar = document.querySelector("#sidebar")
-        var container = document.querySelector(".my-container")
-        var header = document.querySelector(".header-container")
-        //Realizamos evento, Animacion sidebar
-        menu_btn.addEventListener("click", () => {
-            sidebar.classList.toggle("active-nav")
-            container.classList.toggle("active-cont")
-            header.classList.toggle("active-cont")
-        })
+        $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
     });
 </script>
 
