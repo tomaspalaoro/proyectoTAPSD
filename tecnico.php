@@ -2,24 +2,7 @@
 require("PHP/auth.php");
 
 require "./Conexion.php";
-$pdo = Conexion::getInstance();
 
-$email = isset($_SESSION['sesion']) ? $_SESSION['sesion'] : null;
-echo $_SESSION['sesion'];
-//RECUPERA LOS DATOS DEL PROFESOR A PARTIR DE SU EMAIL
-$sql = "SELECT * from tecnico WHERE email = '$email'";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-
-$nombre = "";
-$apellido = "";
-//RECORRE LOS DATOS Y LOS ASIGNA A VARIABLES
-$tecnico = $stmt->fetchAll();
-foreach ($tecnico as $row) {
-    $nombre = isset($row['nombre']) ? $row['nombre'] : null;
-    $apellido = isset($row['apellido']) ? $row['apellido'] : null;
-    $telefono = isset($row['telefono']) ? $row['telefono'] : null;
-}
 ?>
 <html lang="es">
 <head>
@@ -51,12 +34,12 @@ foreach ($tecnico as $row) {
 
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
-        <form action="<?php echo ruta_tecnico ?>" name="miForm" method="POST">
+        <form action="" name="miForm" method="POST">
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img id="imagenTecnico" class="rounded-circle mt-5" width="150px" src="IMG/tecnicoDefaultPic.jpg">
                         <input class="form-control form-control-sm" id="editarFoto" type="file" accept="image/png, image/jpeg, image/jpg"></input>
-                        <span class="font-weight-bold">Nombre</span><span class="text-black" id="emailTecnico"><?php echo $email; ?></span><span> </span></div>
+                        <span class="font-weight-bold">Nombre</span><span class="text-black emailTecnico" class="emailTecnico"></span><span> </span></div>
                 </div>
                 <div class="col-md-5 border-right bg-white">
                     <div class="p-3 py-5">
@@ -66,15 +49,11 @@ foreach ($tecnico as $row) {
 
                         <div class="row mt-2">
                             <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" id="nombreTecnico"></div>
-                            <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value="<?php echo $apellido; ?>"></div>
+                            <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" id="apellido1Tecnico"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Correo electrónico</label><input type="text" class="form-control" value="<?php echo $email; ?>"></div>
-                            <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" value="<?php echo $telefono ?>"></div>
-                            <div class="col-md-12"><label class="labels">Codigo Postal</label><input type="text" class="form-control" value=""></div>
-                            <div class="col-md-12"><label class="labels">Provincia</label><input type="text" class="form-control" value=""></div>
-                            <div class="col-md-12"><label class="labels">Ciudad</label><input type="text" class="form-control" id="ciudadTecnico"></div>
-                            <div class="col-md-12"><label class="labels">Estudios</label><input type="text" class="form-control" value=""></div>
+                            <div class="col-md-12"><label class="labels">Correo electrónico</label><input type="text" class="form-control emailTecnico" ></div>
+                            <div class="col-md-12"><label class="labels">Número de teléfono</label><input type="text" class="form-control" id="telefonoTecnico"></div>
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" id="editarPerfil" type="submit">Editar perfil</button>

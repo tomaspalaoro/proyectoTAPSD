@@ -27,23 +27,11 @@ $( document ).ready(function() {
 
         try{        
 
-            $("#emailTecnico").val(request.data.email);
+            $(".emailTecnico").val(request.data.email);
             $("#nombreTecnico").val(request.data.nombre);
-            $("#ciudadTecnico").val(request.data.ciudad);
-           
-/*
-            for(var i=0; i<request.campos.length; i++){
-                $("#thead").append("<td>"+ request.campos[i].Field + "</td>");
-            }
-
-            for(var i=0; i<request.data.length; i++){
-                
-                $("#tbody").append("<td>"+ request.data[i].nombre + "</td>");
-                $("#tbody").append("<td>"+ request.data[i].apellido_1 + "</td>");
-                $("#tbody").append("<td>"+ request.data[i].apellido_2 + "</td>");
-                $("#tbody").append("</tr>");
-            }
-            */
+            $("#apellido1Tecnico").val(request.data.apellido_1);
+            $("#apellido2Tecnico").val(request.data.apellido_2);
+            $("#telefonoTecnico").val(request.data.telefono);
 
             
 
