@@ -24,10 +24,10 @@ $(document).ready(function() {
 //Nuevo Evento
   select: function(start, end){
       $("#exampleModal").modal();
-      $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY hh:mm'));
+      $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY hh:mm:ss'));
        
-      var valorFechaFin = end.format("DD-MM-YYYY hh:mm");
-      var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY hh:mm'); //Le resto 1 dia
+      var valorFechaFin = end.format("DD-MM-YYYY hh:mm:ss");
+      var F_final = moment(valorFechaFin, "DD-MM-YYYY hh:mm:ss").subtract(1, 'days').format('DD-MM-YYYY hh:mm:ss'); //Le resto 1 dia
       $('input[name=fecha_fin').val(F_final);  
 
     },
