@@ -1,13 +1,9 @@
 <?php
-include ("PHP/variables.inc.php");
+//include ("PHP/variables.inc.php");
 require("PHP/auth.php");
-
-$ruta_imagen= "IMG/avatar1.png";
-$id_usuario = "2";
-$nombre = "Nombre";
-$email = "correo@email.com";
-$direccion = "Direccion";
-$telefono = "625 76 56 34";
+require "Conexion.php";
+$pdo = Conexion::getInstance();
+$sql_where = "";
 
 $usuariosMostrados = 5;
 $usuariosTotales = 25;
@@ -57,24 +53,47 @@ $paginaActual = 1;
                     <tr>
                         <th></th>
                         <th>Nombre</th>
-                        <th>Email</th>
+                        <th>Apellidos</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
                         <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <?php
+                    $sql = "SELECT * FROM usuario";
+                    if (!empty($busqueda)){
+                        //WHERE OPCIONAL QUE BUSCA POR NOMBRE Y APELLIDOS
+                        $sql_where .= " AND nombre LIKE '%$busqueda%' OR apellido_1 LIKE '%$busqueda%' OR apellido_2 LIKE '%$busqueda%'";
+                    }
+                    $stmt = $pdo->prepare($sql.$sql_where);
+                    $stmt->execute();
+
+                    while ($filaUsuario = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        $id = isset($filaUsuario['id']) ? $filaUsuario['id'] : null;
+                        $nombre = isset($filaUsuario['nombre']) ? $filaUsuario['nombre'] : null;
+                        $apellido1 = isset($filaUsuario['apellido_1']) ? $filaUsuario['apellido_1'] : null;
+                        $apellido2 = isset($filaUsuario['apellido_2']) ? $filaUsuario['apellido_2'] : null;
+                        $telefono = isset($filaUsuario['telefono']) ? $filaUsuario['telefono'] : null;
+                        $direccion = isset($filaUsuario['direccion']) ? $filaUsuario['direccion'] : null;
+                        $ruta_imagen= "IMG/avatar1.png";
+                        //continua while
+                    ?>
                     <tr>
                         <td><img src="<?php echo $ruta_imagen; ?>" class="rounded-circle shadow-4" style="max-width: 100px;"></td>
                         <td><?php echo $nombre; ?></td>
-                        <td><?php echo $email; ?></td>
+                        <td><?php echo $apellido1." ".$apellido2; ?></td>
                         <td><?php echo $direccion; ?></td>
                         <td><?php echo $telefono; ?></td>
                         <td>
-                            <a href="#editarUsuarioModal" class="edit" data-id="<?php echo $id_usuario; ?>" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>
-                            <a href="#borrarUsuarioModal" class="delete" data-id="<?php echo $id_usuario; ?>" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>
+                            <a href="#editarUsuarioModal" class="edit" data-id="<?php echo $id; ?>" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>
+                            <a href="#borrarUsuarioModal" class="delete" data-id="<?php echo $id; ?>" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>
                         </td>
                     </tr>
+                    <?php
+                        //cerrar while
+                    };
+                    ?>
                     </tbody>
                 </table>
                 <div class="clearfix">
