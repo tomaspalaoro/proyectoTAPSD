@@ -1,4 +1,6 @@
-
+<?php
+$ruta_nuevoEvento = calendario/nuevoEvento.php
+?>
 <div class="modal" id="exampleModal"  tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -8,7 +10,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEvento" id="formEvento" action="nuevoEvento.php" class="form-horizontal" method="POST">
+  <form name="formEvento" id="formEvento" action="<?php echo $ruta_nuevoEvento; ?>" class="form-horizontal" method="POST">
 		<div class="form-group">
 			<label for="evento" class="col-sm-12 control-label">Nombre del Evento</label>
 			<div class="col-sm-10">

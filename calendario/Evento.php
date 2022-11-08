@@ -1,4 +1,5 @@
-<?php 
+<?php
+require("../PHP/variables.inc.php");
 require("Singleton.php");
 class Evento{
 private $id;
@@ -60,7 +61,7 @@ static public function __nuevoEvento(){
   	$stmt=$Singleton->prepare($InsertNuevoEvento);
 	 	$stmt->execute();
 
-  header("Location:index.php?e=1");
+  header("Location:".ruta_calendario."?e=1");
 }
 static public function __Update(){
 	$Singleton=Singleton::getInstance();
@@ -89,7 +90,7 @@ static public function __Update(){
 	 	$stmt=$Singleton->prepare($UpdateProd);
 	 	$stmt->execute();
 
-	 	header("Location:index.php?ea=1");
+	 	header("Location:".ruta_calendario."?ea=1");
 		exit;
 
 }
