@@ -20,10 +20,12 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
   <link rel="icon" type="image/jpg" href=""/>
-  
-
 </head>
+
 <body>
+<div id="navbarsidebar"></div>
+<section class="p-4 my-container">
+<div
 	<div class="mt-5"></div>
 
 <div class="container">
@@ -34,23 +36,25 @@
       ?>
     </div>
   </div>
-
 <div class="row">
   <div class="col-md-12 mb-3">
   <h3 class="text-center" id="title">Calendario TAPSD</h3>
   </div>
 </div>
 </div>
-
-
-
 <div id="calendar"></div>
-
-
 <?php  
   include('modalNuevoEvento.php');
   include('modalUpdateEvento.php');
 ?>
-
 </body>
+<script>
+    $.get("navbar_sidebar_calendario.html", function(data){
+        /*CARGAR NAVBAR Y SIDEBAR*/
+        $("#navbarsidebar").html(data);
+        console.log("hola")
+
+        $("#nombreApellidos").html("");
+    });
+</script>
 </html>
