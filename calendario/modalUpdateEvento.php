@@ -1,6 +1,4 @@
-<?php
-$ruta_updateEvento = calendario/UpdateEvento.php
-?>
+
 <div class="modal" id="modalUpdateEvento"  tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,7 +8,7 @@ $ruta_updateEvento = calendario/UpdateEvento.php
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form name="formEventoUpdate" id="formEventoUpdate" action="<?php echo $ruta_updateEvento; ?>" class="form-horizontal" method="POST">
+  <form name="formEventoUpdate" id="formEventoUpdate" action="UpdateEvento.php" class="form-horizontal" method="POST">
     <input type="hidden" class="form-control" name="idEvento" id="idEvento">
     <div class="form-group">
       <label for="evento" class="col-sm-12 control-label">Nombre del Evento</label>

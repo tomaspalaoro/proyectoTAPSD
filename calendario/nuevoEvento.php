@@ -1,5 +1,4 @@
 <?php
-require("../PHP/variables.inc.php");
 require("Evento.php");
 date_default_timezone_set("Europe/Paris");
 setlocale(LC_ALL,"es_ES");
@@ -34,6 +33,6 @@ $InsertNuevoEvento = "INSERT INTO calendario(
   //$sth=$con->prepare($InsertNuevoEvento);
   $stmt->execute();
 
-header("Location:".ruta_calendario."?e=1");
+header("Location:index.php?e=1");
 
 ?>

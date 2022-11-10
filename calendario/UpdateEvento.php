@@ -1,5 +1,4 @@
 <?php
-require("../PHP/variables.inc.php");
 date_default_timezone_set("Europe/Paris");
 setlocale(LC_ALL,"es_ES");
 
@@ -33,6 +32,6 @@ $UpdateProd = ("UPDATE calendario
   $stmt->execute();
   
 
-header("Location:".ruta_calendario."?ea=1");
+header("Location:index.php?ea=1");
 exit;
 ?>
