@@ -2,8 +2,7 @@
 //include ("PHP/variables.inc.php");
 require("PHP/auth.php");
 require "Conexion.php";
-$pdo = Conexion::getInstance();
-$sql_where = "";
+
 
 $usuariosMostrados = 5;
 $usuariosTotales = 25;
@@ -59,41 +58,8 @@ $paginaActual = 1;
                         <th>Acciones</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <?php
-                    $sql = "SELECT * FROM usuario";
-                    if (!empty($busqueda)){
-                        //WHERE OPCIONAL QUE BUSCA POR NOMBRE Y APELLIDOS
-                        $sql_where .= " AND nombre LIKE '%$busqueda%' OR apellido_1 LIKE '%$busqueda%' OR apellido_2 LIKE '%$busqueda%'";
-                    }
-                    $stmt = $pdo->prepare($sql.$sql_where);
-                    $stmt->execute();
-
-                    while ($filaUsuario = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        $id = isset($filaUsuario['id']) ? $filaUsuario['id'] : null;
-                        $nombre = isset($filaUsuario['nombre']) ? $filaUsuario['nombre'] : null;
-                        $apellido1 = isset($filaUsuario['apellido_1']) ? $filaUsuario['apellido_1'] : null;
-                        $apellido2 = isset($filaUsuario['apellido_2']) ? $filaUsuario['apellido_2'] : null;
-                        $telefono = isset($filaUsuario['telefono']) ? $filaUsuario['telefono'] : null;
-                        $direccion = isset($filaUsuario['direccion']) ? $filaUsuario['direccion'] : null;
-                        $ruta_imagen= "IMG/avatar1.png";
-                        //continua while
-                    ?>
-                    <tr>
-                        <td><img src="<?php echo $ruta_imagen; ?>" class="rounded-circle shadow-4" style="max-width: 100px;"></td>
-                        <td><?php echo $nombre; ?></td>
-                        <td><?php echo $apellido1." ".$apellido2; ?></td>
-                        <td><?php echo $direccion; ?></td>
-                        <td><?php echo $telefono; ?></td>
-                        <td>
-                            <a href="#editarUsuarioModal" class="edit" data-id="<?php echo $id; ?>" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>
-                            <a href="#borrarUsuarioModal" class="delete" data-id="<?php echo $id; ?>" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>
-                        </td>
-                    </tr>
-                    <?php
-                        //cerrar while
-                    };
-                    ?>
+                    <tbody id="datosUsuarios">
+                    
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -119,23 +85,23 @@ $paginaActual = 1;
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nombre (*)</label>
-                            <input type="text" name="nombre" class="form-control" required>
+                            <input type="text" name="nombre" class="form-control" id="regUsuarioNombre" required>
                         </div>
                         <div class="form-group">
                             <label>Primer Apellido (*)</label>
-                            <input type="text" name="apellido1" class="form-control" required>
+                            <input type="text" name="apellido1" class="form-control" id="regUsuarioApellido1" required>
                         </div>
                         <div class="form-group">
                             <label>Segundo Apellido (*)</label>
-                            <input type="text" name="apellido2" class="form-control" required>
+                            <input type="text" name="apellido2" class="form-control" id="regUsuarioApellido2" required>
                         </div>
                         <div class="form-group">
                             <label>Teléfono (*)</label>
-                            <input type="text" name="telefono" class="form-control" required>
+                            <input type="text" name="telefono" class="form-control" id="regUsuarioTelefono" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" id="regUsuarioEmail" >
                         </div>
                         <div class="form-group">
                             <label>Dirección</label>
@@ -144,7 +110,7 @@ $paginaActual = 1;
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <button type="submit" class="btn btn-info" name="enviar" value="insertUsuario" form="form1">Añadir</button>
+                        <button type="submit" class="btn btn-info" name="enviar" value="insertUsuario" form="form1" id="insertarUsuario">Añadir</button>
                     </div>
                 </form>
             </div>
@@ -209,7 +175,7 @@ $paginaActual = 1;
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="submit" class="btn btn-danger" value="Delete" id="deleteUsuario">
                     </div>
                 </form>
             </div>
@@ -219,7 +185,7 @@ $paginaActual = 1;
 <script>
     $.get("navbar_sidebar.html", function(data){
         /*CARGAR NAVBAR Y SIDEBAR*/
-        console.log("a")
+        
         $("#navbarsidebar").html(data);
 
         $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
@@ -238,5 +204,6 @@ $paginaActual = 1;
         $(".modal-body #idUsuario").val( modalId );
     });
 </script>
+<script type="text/javascript" src="./JS/usuario.js"></script>
 </body>
 </html>

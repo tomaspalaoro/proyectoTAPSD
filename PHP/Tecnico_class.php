@@ -82,6 +82,26 @@
                 throw new Excepcion($e->getMessage(), 1);
             }
 		}
+
+        public static function getToken($email){
+
+            include("../Conexion.php");
+			$pdo=Conexion::getInstance();
+
+
+            try{
+                $sql = "SELECT token from tecnico WHERE email = '$email'";
+
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+                
+            }catch (Excepcion $e){
+                throw new Excepcion($e->getMessage(), 1);
+            }
+
+        }
         
 
     }
