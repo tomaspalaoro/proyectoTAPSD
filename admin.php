@@ -59,7 +59,7 @@ $paginaActual = 1;
                     </tr>
                     </thead>
                     <tbody id="datosUsuarios">
-                    
+                        <tr>
                     </tbody>
                 </table>
                 <div class="clearfix">
