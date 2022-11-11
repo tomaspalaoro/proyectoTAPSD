@@ -13,21 +13,20 @@ $( document ).ready(function() {
 
 
         for(var i=0; i<request.data.length; i++){
-                $("#datosUsuarios").append("<tr>");
-                $("#datosUsuarios").append("<td>"+ '<img src="IMG/avatar1.png" class="rounded-circle shadow-4" style="max-width: 100px;">' + "</td>");
-                $("#datosUsuarios").append("<td>"+ request.data[i].nombre + "</td>");
-                $("#datosUsuarios").append("<td>"+ request.data[i].apellido_1 + request.data[i].apellido_2 + "</td>");
-                $("#datosUsuarios").append("<td>"+ request.data[i].direccion + "</td>");
-                $("#datosUsuarios").append("<td>"+ request.data[i].telefono + "</td>");
+            var ultimoTr = $("#datosUsuarios tr:last");
+            ultimoTr.append("<td>"+ '<img src="IMG/avatar1.png" class="rounded-circle shadow-4" style="max-width: 100px;">' + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].nombre + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].apellido_1 + request.data[i].apellido_2 + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].direccion + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].telefono + "</td>");
+            ultimoTr.append("<td>");
+            $("#datosUsuarios tr:last td:last").append('<a href="#editarUsuarioModal" class="edit" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>');
+            $("#datosUsuarios tr:last td:last").append('<a href="#borrarUsuarioModal" class="delete" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>'+ "</td></tr>");
+            $("#datosUsuarios").append("<tr>");
 
-                $("#datosUsuarios").append("</td>");
-                    $("#datosUsuarios").append('<a href="#editarUsuarioModal" class="edit" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>');
-                    $("#datosUsuarios").append('<a href="#borrarUsuarioModal" class="delete" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>');
-                $("#datosUsuarios").append("<td></tr>");
-              
         }
 
-        
+
     });
 
     /*
@@ -44,9 +43,9 @@ $( document ).ready(function() {
 
     */
 
-                        
+
     $("#insertarUsuario").click(function(){
-        
+
         console.log("entra");
 
         var request = $.ajax({
@@ -64,5 +63,5 @@ $( document ).ready(function() {
         });
 
     });
-    
+
 });
