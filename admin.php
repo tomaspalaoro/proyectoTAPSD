@@ -36,14 +36,14 @@ $paginaActual = 1;
     <!--Grid-->
     <div class="container-xl">
         <div class="table-responsive">
-            <div class="table-wrapper">
+         <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
                             <h2><b>Usuarios</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-primary" data-bs-toggle="modal"><img src="IMG/icons8-más-32.png" style="max-width: 20px"> <span>Añadir usuario</span></a>
+                            <a href="#addUsuarioModal" class="btn btn-primary" data-bs-toggle="modal"><img src="IMG/icons8-más-32.png" style="max-width: 20px"> <span>Añadir usuario</span></a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ $paginaActual = 1;
         </div>
     </div>
     <!-- Add Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
+    <div id="addUsuarioModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="PHP/registrar.php" method="POST" id="form1">
@@ -178,6 +178,36 @@ $paginaActual = 1;
                         <input type="submit" class="btn btn-danger" value="Delete" id="deleteUsuario">
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <h1>Listado de Técnicos</h1>
+    <!--Grid-->
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2><b>Técnicos</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody id="datosUsuarios">
+                    <tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
