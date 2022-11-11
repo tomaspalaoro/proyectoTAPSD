@@ -34,16 +34,12 @@
             break;
             case "getTecnico":
 
-                
-            
                 $array = array(
                     "success"=>true,
                     "msg"=>"getTecnico",
                     "data"=>Tecnico::getTecnico($email),
                     "email"=>$email
                 );
-
-                
 
             break;
 

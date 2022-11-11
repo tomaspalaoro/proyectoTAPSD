@@ -41,7 +41,7 @@ $paginaActual = 1;
 <script>
     $.get("navbar_sidebar.html", function(data){
         /*CARGAR NAVBAR Y SIDEBAR*/
-        console.log("a")
+        
         $("#navbarsidebar").html(data);
 
         $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
