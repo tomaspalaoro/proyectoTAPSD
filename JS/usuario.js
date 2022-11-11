@@ -19,9 +19,9 @@ $( document ).ready(function() {
             ultimoTr.append("<td>"+ request.data[i].apellido_1 + request.data[i].apellido_2 + "</td>");
             ultimoTr.append("<td>"+ request.data[i].direccion + "</td>");
             ultimoTr.append("<td>"+ request.data[i].telefono + "</td>");
-
-            ultimoTr.append("<td>"+ '<a href="#editarUsuarioModal" class="edit" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>'+ "</td>");
-            ultimoTr.append("<td>"+ '<a href="#borrarUsuarioModal" class="delete" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>'+ "</td></tr>");
+            ultimoTr.append("<td>");
+            $("#datosUsuarios tr:last td:last").append('<a href="#editarUsuarioModal" class="edit" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-editar-32.png"></a>');
+            $("#datosUsuarios tr:last td:last").append('<a href="#borrarUsuarioModal" class="delete" data-id="' + request.data[i].id + '" data-bs-toggle="modal"><img src="IMG/icons8-basura-llena-32.png"></a>'+ "</td></tr>");
             $("#datosUsuarios").append("<tr>");
 
         }
