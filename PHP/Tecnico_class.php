@@ -102,6 +102,27 @@
             }
 
         }
+
+        public static function getAllTecnicos(){
+
+            include("../Conexion.php");
+
+
+			$pdo=Conexion::getInstance();
+
+
+            try{
+                $sql = "SELECT * from tecnico";
+
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+            }catch (Excepcion $e){
+                throw new Excepcion($e->getMessage(), 1);
+            }
+		}
         
 
     }

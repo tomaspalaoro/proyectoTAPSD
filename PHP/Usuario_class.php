@@ -12,8 +12,8 @@
         private $OBSERVACIONES;
 
 
-
-        public function __construct($nombre=null, $apellido1=null, $apellido2=null, $telefono=null, $direccion=null, $email=null, $observaciones=null)
+        
+        public function __construct($nombre=null, $apellido1=null, $apellido2=null, $telefono=null, $direccion=null, $email=null)
         {
             $this->NOMBRE = $nombre;
             $this->APELLIDO_1 = $apellido1;
@@ -23,11 +23,13 @@
             $this->EMAIL = $email;
             $this->OBERVACIONES = $observaciones;
         }
+        
+
+        
 
         public function registrarUsuario(){
             try {
                 $pdo=Conexion::getInstance();
-    
                 
                 if (empty($this->NOMBRE))
                     throw new Exception("El nombre es obligatorio.");
@@ -64,13 +66,14 @@
             }
 		}
 
-        public static function getTodosUsuarios(){
+        public static function getAllUsuarios($pagina=0, $num_registros=5){
 
             include("../Conexion.php");
 			$pdo=Conexion::getInstance();
 
             try{
-                $sql = "SELECT * from usuario WHERE true";
+                $sql = "SELECT * from usuario WHERE true ";
+                //$sql .= ' LIMIT '.$pagina.' , '.$num_registros;
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
@@ -78,11 +81,11 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
             }catch (Excepcion $e){
-                throw new Excepcion($e->getMessage(), 1);
+                return $e->getMessage();
             }
         }
 
-        public static function deleteUsuario($id=null, $filters=[]){
+        public static function deleteUsuario($id=null){
 
             include("../Conexion.php");
 			$pdo=Conexion::getInstance();
@@ -108,11 +111,29 @@
 
 
             if(isset($filters["nombre"])) {
-                $sqlUpdate=' nombre="'.$filters["nombre"].'"';
-
+                $sqlUpdate='nombre="'.$filters["nombre"].'"';
+            }
+            
+            if(isset($filters["apellido_1"])) {
+                $sqlUpdate=' apellido_1="'.$filters["apellido_1"].'"';
+            }
+            
+            if(isset($filters["apellido_2"])) {
+                $sqlUpdate=' apellido_2="'.$filters["apellido_2"].'"';
+            }
+/*
+            if(isset($filters["telefono"])) {
+                $sqlUpdate=' telefono="'.$filters["telefono"].'"';
             }
 
+            if(isset($filters["email"])) {
+                $sqlUpdate=' email="'.$filters["email"].'"';
+            }
 
+            if(isset($filters["direccion"])) {
+                $sqlUpdate=' direccion="'.$filters["direccion"].'"';
+            }
+            */
 
 
             try{

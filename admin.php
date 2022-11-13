@@ -89,15 +89,15 @@ $paginaActual = 1;
                         </div>
                         <div class="form-group">
                             <label>Primer Apellido (*)</label>
-                            <input type="text" name="apellido1" class="form-control" id="regUsuarioApellido1" required>
+                            <input type="text" name="apellido1" class="form-control" id="regUsuarioApellido1" >
                         </div>
                         <div class="form-group">
                             <label>Segundo Apellido (*)</label>
-                            <input type="text" name="apellido2" class="form-control" id="regUsuarioApellido2" required>
+                            <input type="text" name="apellido2" class="form-control" id="regUsuarioApellido2" >
                         </div>
                         <div class="form-group">
                             <label>Teléfono (*)</label>
-                            <input type="text" name="telefono" class="form-control" id="regUsuarioTelefono" required>
+                            <input type="text" name="telefono" class="form-control" id="regUsuarioTelefono" >
                         </div>
                         <div class="form-group">
                             <label>Email</label>
@@ -105,7 +105,7 @@ $paginaActual = 1;
                         </div>
                         <div class="form-group">
                             <label>Dirección</label>
-                            <textarea class="form-control"></textarea>
+                            <input type="text" class="form-control" id="regUsuarioDireccion" >
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -141,15 +141,15 @@ $paginaActual = 1;
                         </div>
                         <div class="form-group">
                             <label>Teléfono (*)</label>
-                            <input type="text" name="telefono" class="form-control" required>
+                            <input type="text" name="telefono" class="form-control" id="editTelefono" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" id="editEmail">
                         </div>
                         <div class="form-group">
                             <label>Dirección</label>
-                            <textarea class="form-control"></textarea>
+                            <input type="text" class="form-control" id="editDireccion">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -204,7 +204,7 @@ $paginaActual = 1;
                         <th>Acciones</th>
                     </tr>
                     </thead>
-                    <tbody id="datosUsuarios">
+                    <tbody id="datosTecnicos">
                     <tr>
                     </tbody>
                 </table>
@@ -224,19 +224,26 @@ $paginaActual = 1;
 
     //PASAR LA ID DEL MODAL
     $('#editarUsuarioModal').on('shown.bs.modal', function (e) {
-        console.log("Editar usuario abierto");
         var modalId = $(e.relatedTarget).attr('data-id');
-        $(".modal-body #idUsuario").val( modalId );
+        //$(".modal-body #idUsuario").val( modalId );
         $("#editarUsuario").val( modalId );
     });
     $('#borrarUsuarioModal').on('shown.bs.modal', function (e) {
-        console.log("Borrar usuario abierto");
         var modalId = $(e.relatedTarget).attr('data-id');
-        $(".modal-body #idUsuario").val( modalId );
+        //$(".modal-body #idUsuario").val( modalId );
+        $("#borrarUsuario").val( modalId );
+    });
+
+    $('#editarTecnicoModal').on('shown.bs.modal', function (e) {
+        var modalId = $(e.relatedTarget).attr('data-id');
+        $("#editarUsuario").val( modalId );
+    });
+    $('#borrarTecnicoModal').on('shown.bs.modal', function (e) {
+        var modalId = $(e.relatedTarget).attr('data-id');
         $("#borrarUsuario").val( modalId );
     });
 </script>
 
-<script type="text/javascript" src="./JS/usuario.js"></script>
+<script type="text/javascript" src="./JS/admin.js"></script>
 </body>
 </html>

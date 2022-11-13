@@ -6,8 +6,13 @@
     $id = isset($_POST['id'])? $_POST['id']:null;
     $filters = isset($_POST["filters"])? $_POST["filters"]:[];
 
+    //$data = json_decode(file_get_contents('php://input'), true);
+    $arrUsuario = isset($_POST["data"])? $_POST["data"]:[];
 
+    $pagina=0;
+    $num_registros=10;
 
+    //Array Inicial
     $array = array(
         "success"=>false,
         "msg"=>"INICIAL",
@@ -22,7 +27,7 @@
             //CREATE
             case "registrarUsuario":
 
-                $usuario = new Usuario($arrMedico["sip"], $arrMedico["nombre"]);
+                $usuario = new Usuario($arrUsuario['nombre'], $arrUsuario['apellido1'], $arrUsuario['apellido2'], $arrUsuario['telefono'], $arrUsuario['direccion'], $arrUsuario['email']);
                 if ($usuario->insert()) {
                     $array = array(
                         "success"=>true,
@@ -44,7 +49,7 @@
                 $array = array(
                     "success"=>true,
                     "msg"=>"getUsuarios",
-                    "data"=>Usuario::getTodosUsuarios(),
+                    "data"=>Usuario::getAllUsuarios(),
                     
                 );
 
@@ -69,8 +74,7 @@
                 $array = array(
                     "success"=>true,
                     "msg"=>"UsuarioBorrado",
-                    "data"=>Usuario::deleteUsuario(),
-                    
+                    "data"=>Usuario::deleteUsuario($id),
                 );
             break;
 

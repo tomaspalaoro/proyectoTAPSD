@@ -43,6 +43,16 @@
 
             break;
 
+            case "getAllTecnicos":
+
+                $array = array(
+                    "success"=>true,
+                    "msg"=>"getTecnicos",
+                    "data"=>Tecnico::getAllTecnicos()
+                );
+
+            break;
+
             default:
             // JSON acción no soportada
             $array = array(

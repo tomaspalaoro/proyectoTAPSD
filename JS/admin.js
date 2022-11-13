@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
     readUsuarios();
+    getAllTecnicos();
 
     //INSERT
     $("#insertarUsuario").click(function(){
@@ -8,7 +9,7 @@ $( document ).ready(function() {
         console.log("entra");
 
         var request = $.ajax({
-            url: "SW_Usuario.php",
+            url: "./PHP/SW_Usuario.php",
             method: "POST",
             data: {
                 accion: "registrarUsuario",
@@ -16,6 +17,7 @@ $( document ).ready(function() {
                 apellido1: $('#regUsuarioApellido1').val(),
                 apellido2: $('#regUsuarioApellido2').val(),
                 telefono: $('#regUsuarioTelefono').val(),
+                direccion: $('#regUsuarioDireccion').val(),
                 email: $('#regUsuarioTelefono').val()
             },
             dataType: "json"
@@ -57,7 +59,10 @@ $( document ).ready(function() {
                 filters:{
                     nombre:$('#editNombre').val(),
                     apellido1:$('#editApellido1').val(),
-                    apellido2:$('#editApellido2').val()
+                    apellido2:$('#editApellido2').val(),
+                    telefono:$('#editTelefono').val(),
+                    email:$('#editEmail').val(),
+                    direccion:$('#editDireccion').val()
                 }
             },
             dataType: "json"
@@ -103,4 +108,39 @@ function readUsuarios() {
 
     });
 
-  }
+}
+
+function getAllTecnicos() {
+    
+
+    var request = $.ajax({
+        url: "./PHP/SW_Tecnico.php",
+        method: "POST",
+        data: {
+            accion: "getAllTecnicos",
+        },
+        dataType: "json"
+    });
+
+    request.done(function( request ) {
+
+        $("#datosTecnicos").empty();
+
+        for(var i=0; i<request.data.length; i++){
+            var ultimoTr = $("#datosTecnicos tr:last");
+            ultimoTr.append("<td>"+ '<img src="IMG/avatar1.png" class="rounded-circle shadow-4" style="max-width: 100px;">' + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].email + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].nombre + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].apellido_1 + request.data[i].apellido_2 + "</td>");
+            ultimoTr.append("<td>"+ request.data[i].telefono + "</td>");
+            ultimoTr.append("<td>");
+            $("#datosTecnicos tr:last td:last").append('<a href="#editarTecnicoModal" class="edit" data-id="' + request.data[i].email + '" data-bs-toggle="modal" data-target="#myModall" ><img src="IMG/icons8-editar-32.png"></a>');
+            $("#datosTecnicos tr:last td:last").append('<a href="#borrarTecnicoModal" class="delete" data-id="' + request.data[i].email + '" data-bs-toggle="modal" data-target="#myModal" ><img src="IMG/icons8-basura-llena-32.png"></a>'+ "</td></tr>");
+            $("#datosTecnicos").append("<tr>");
+            
+        }
+
+
+    });
+
+}
