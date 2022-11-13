@@ -4,21 +4,22 @@
 
     $accion = isset($_POST['accion'])? $_POST['accion']:null;
     $id = isset($_POST['id'])? $_POST['id']:null;
-
+    $filters = isset($_POST["filters"])? $_POST["filters"]:[];
 
 
 
     $array = array(
         "success"=>false,
         "msg"=>"INICIAL",
-        "param"=>$accion
-    );
-
+        "param"=>$accion,
+        "param2"=>$id,
+        "filters"=>$filters
+    );    
     
 
     try{
         switch($accion){
-
+            //CREATE
             case "registrarUsuario":
 
                 $usuario = new Usuario($arrMedico["sip"], $arrMedico["nombre"]);
@@ -36,7 +37,8 @@
                 
 
             break;
-                  
+
+            //READ
             case "get":
 
                 $array = array(
@@ -46,9 +48,34 @@
                     
                 );
 
-                
+            break;
+
+            //UPDATE
+            case "editarusuario":
+
+                $usuario = new Usuario();
+
+                $array = array(
+                    "success"=>true,
+                    "msg"=>"getUsuarios",
+                    "data"=>Usuario::updateUsuario($id, $filters),
+                    
+                );
 
             break;
+
+            //DELETE
+            case "borrarUsuario":
+                $array = array(
+                    "success"=>true,
+                    "msg"=>"UsuarioBorrado",
+                    "data"=>Usuario::deleteUsuario(),
+                    
+                );
+            break;
+
+            
+
 
             case "getUsuario":
 
@@ -60,6 +87,8 @@
                 );
 
             break;
+
+            
 
             default:
             // JSON acción no soportada
@@ -80,8 +109,18 @@
     }
 
 
-    $json = json_encode($array);
-    echo $json;
+    if($json = json_encode($array)){
+        echo $json;
+    }else{
+        $json = array(
+            "data" => [],
+            "msg" => "Error al parsear el JSON",
+            "success" => false
+        );
+    
+        echo json_encode($json);
+    }
+    
 
 
 ?>

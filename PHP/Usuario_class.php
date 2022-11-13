@@ -82,7 +82,7 @@
             }
         }
 
-        public static function deleteUsuario($id=null){
+        public static function deleteUsuario($id=null, $filters=[]){
 
             include("../Conexion.php");
 			$pdo=Conexion::getInstance();
@@ -94,6 +94,34 @@
                 $stmt->execute();
 
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+            }catch (Excepcion $e){
+                throw new Excepcion($e->getMessage(), 1);
+            }
+        }
+
+        public static function updateUsuario($id=null, $filters=null){
+
+            include("../Conexion.php");
+			$pdo=Conexion::getInstance();
+            $sqlUpdate="";
+
+
+            if(isset($filters["nombre"])) {
+                $sqlUpdate=' nombre="'.$filters["nombre"].'"';
+
+            }
+
+
+
+
+            try{
+                $sql = "UPDATE usuario SET $sqlUpdate WHERE id=$id";
+
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                return $sql;
                 
             }catch (Excepcion $e){
                 throw new Excepcion($e->getMessage(), 1);
