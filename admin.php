@@ -129,15 +129,15 @@ $paginaActual = 1;
                         <input type="text" name="idUsuario" id="idUsuario">
                         <div class="form-group">
                             <label>Nombre (*)</label>
-                            <input type="text" name="nombre" class="form-control" required>
+                            <input type="text" name="nombre" class="form-control" id="editNombre" required>
                         </div>
                         <div class="form-group">
                             <label>Primer Apellido (*)</label>
-                            <input type="text" name="apellido1" class="form-control" required>
+                            <input type="text" name="apellido1" class="form-control" id="editApellido1" required>
                         </div>
                         <div class="form-group">
                             <label>Segundo Apellido (*)</label>
-                            <input type="text" name="apellido2" class="form-control" required>
+                            <input type="text" name="apellido2" class="form-control" id="editApellido2" required>
                         </div>
                         <div class="form-group">
                             <label>Teléfono (*)</label>
@@ -154,7 +154,7 @@ $paginaActual = 1;
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <button type="submit" class="btn btn-info" name="enviar" value="updateUsuario" form="form2">Editar</button>
+                        <button type="button" class="btn btn-info" id="editarUsuario" data-bs-dismiss="modal">Editar</button>
                     </div>
                 </form>
             </div>
@@ -164,7 +164,7 @@ $paginaActual = 1;
     <div id="borrarUsuarioModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form >
                     <div class="modal-header">
                         <h4 class="modal-title">Eliminar Usuario</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
@@ -175,7 +175,7 @@ $paginaActual = 1;
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete" id="deleteUsuario">
+                        <button type="button" id="borrarUsuario" class="btn btn-danger" data-bs-dismiss="modal"> Borrar</button>
                     </div>
                 </form>
             </div>
@@ -227,13 +227,16 @@ $paginaActual = 1;
         console.log("Editar usuario abierto");
         var modalId = $(e.relatedTarget).attr('data-id');
         $(".modal-body #idUsuario").val( modalId );
+        $("#editarUsuario").val( modalId );
     });
     $('#borrarUsuarioModal').on('shown.bs.modal', function (e) {
         console.log("Borrar usuario abierto");
         var modalId = $(e.relatedTarget).attr('data-id');
         $(".modal-body #idUsuario").val( modalId );
+        $("#borrarUsuario").val( modalId );
     });
 </script>
+
 <script type="text/javascript" src="./JS/usuario.js"></script>
 </body>
 </html>
