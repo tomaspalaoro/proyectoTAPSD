@@ -24,7 +24,7 @@
 
 <body>
 <div id="navbarsidebar"></div>
-<section class="p-4 my-container">
+<section class="p-4 my-container"></section>
 <div
 	<div class="mt-5"></div>
 

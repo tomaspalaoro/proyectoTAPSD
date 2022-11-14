@@ -7,9 +7,9 @@ require_once('Evento.php');
 
 $idEvento         = $_POST['idEvento'];
 $start            = $_REQUEST['start'];
-$fecha_inicio     = date('Y-m-d', strtotime($start)); 
+$fecha_inicio     = date('Y-m-d H:i:s ', strtotime($start)); 
 $end              = $_REQUEST['end']; 
-$fecha_fin        = date('Y-m-d', strtotime($end));  
+$fecha_fin        = date('Y-m-d H:i:s', strtotime($end));  
 
 
 

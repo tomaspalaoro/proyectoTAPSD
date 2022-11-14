@@ -16,6 +16,29 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`tapsd` /*!40100 DEFAULT CHARACTER SET u
 
 USE `tapsd`;
 
+/*Table structure for table `calendario` */
+
+DROP TABLE IF EXISTS `calendario`;
+
+CREATE TABLE `calendario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `evento` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fecha_inicio` datetime DEFAULT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `color_evento` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+/*Data for the table `calendario` */
+
+insert  into `calendario`(`id`,`evento`,`fecha_inicio`,`fecha_fin`,`color_evento`) values 
+(3,'','1970-01-01 01:00:00','1970-01-01 01:00:00',''),
+(5,'Aaa','2022-11-11 12:00:00','2022-11-11 12:00:00','#FF5722'),
+(6,'Prueba','2022-11-03 12:00:00','2022-11-03 12:00:00','#FF5722'),
+(7,'A','2022-11-02 12:00:00','2022-11-02 12:00:00','#FF5722'),
+(8,'S','2022-11-18 12:00:00','2022-11-18 12:00:00','#9c27b0'),
+(9,'Asdasdas','2022-11-05 12:00:00','2022-11-05 12:00:00','#FF5722');
+
 /*Table structure for table `eventos` */
 
 DROP TABLE IF EXISTS `eventos`;
@@ -87,15 +110,24 @@ insert  into `tecnico`(`email`,`pass`,`nombre`,`apellido_1`,`apellido_2`,`telefo
 DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE `usuario` (
-  `id` int(11) DEFAULT NULL,
-  `nombre` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `apellido_1` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellido_2` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   `f_nacimiento` date DEFAULT NULL,
-  `obervaciones` tinytext COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `obervaciones` tinytext COLLATE utf8_spanish_ci DEFAULT NULL,
+  `telefono` char(12) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `usuario` */
+
+insert  into `usuario`(`id`,`nombre`,`apellido_1`,`apellido_2`,`f_nacimiento`,`obervaciones`,`telefono`) values 
+(1,'prueba','prueba','prueba',NULL,NULL,'52512512'),
+(2,'editado','editado','editado',NULL,NULL,'624242'),
+(3,'asdasdasd','asdasdasd','asdasdas',NULL,NULL,'24123412412'),
+(4,'asdas','dasdasdas','asdasda',NULL,NULL,'631512'),
+(5,'nuevo','nuevo','nuevo',NULL,NULL,'12312412');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
