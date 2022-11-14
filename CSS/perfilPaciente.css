@@ -1,0 +1,24 @@
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: var(--colorPrimario) !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+
+/* Contenido Body */
+body {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+h1 {
+    /*color: var(--color2);*/
+}
+
+#_fotoPaciente{
+    width: 200px;
+}
