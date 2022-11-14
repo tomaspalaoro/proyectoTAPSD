@@ -38,7 +38,7 @@ require "./Conexion.php";
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img id="imagenTecnico" class="rounded-circle mt-5" width="150px" src="IMG/tecnicoDefaultPic.jpg">
-                        <input class="form-control form-control-sm" id="editarFoto" type="file" accept="image/png, image/jpeg, image/jpg"></input>
+                        <input class="form-control form-control-sm" id="imagePerfil" type="file" accept="image/png, image/jpeg, image/jpg"></input>
                         <span class="font-weight-bold">Nombre</span><span class="text-black emailTecnico" class="emailTecnico"></span><span> </span></div>
                 </div>
                 <div class="col-md-5 border-right bg-white">
@@ -57,7 +57,7 @@ require "./Conexion.php";
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary profile-button" id="editarPerfil" type="submit">Editar perfil</button>
-                            <button class="btn btn-primary profile-button" id="actualizarPerfil" type="button">Actualizar</button>
+                            <button class="btn btn-primary profile-button" id="actualizarPerfil" type="submit">Actualizar</button>
                         </div>
         </form>
     </div>
@@ -91,7 +91,7 @@ require "./Conexion.php";
         //f.elements[i].readOnly = true;
     }
 </script>
-<script type="text/javascript" src="./JS/tecnico.js"></script>
+<script type="text/javascript" src="./JS/miCuenta.js"></script>
 <!-- script bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

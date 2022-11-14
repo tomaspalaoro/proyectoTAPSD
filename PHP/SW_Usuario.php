@@ -9,8 +9,7 @@
     //$data = json_decode(file_get_contents('php://input'), true);
     $arrUsuario = isset($_POST["data"])? $_POST["data"]:[];
 
-    $pagina=0;
-    $num_registros=10;
+
 
     //Array Inicial
     $array = array(

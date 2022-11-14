@@ -18,4 +18,7 @@ if (!defined('ruta_tecnico')) define('ruta_tecnico',url_base."proyectoTAPSD/tecn
 if (!defined('ruta_logout')) define('ruta_logout',url_base."proyectoTAPSD/PHP/logout.php");
 if (!defined('ruta_registrar')) define('ruta_registrar',url_base."proyectoTAPSD/PHP/registrar.php");
 if (!defined('ruta_verificar')) define('ruta_verificar',url_base."proyectoTAPSD/PHP/verificar.php");
+if (!defined('ruta_avatares')) define('ruta_avatares',"../IMG/Avatares/");
+//Para las imagenes desde el servidor
+if (!defined('ruta_avataresFront')) define('ruta_avataresFront',"IMG/Avatares/");
 
