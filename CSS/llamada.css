@@ -1,0 +1,46 @@
+*{
+
+}
+
+span {
+    color: black;
+}
+
+.box-title  {
+    background: var(--colorPrimario);
+}
+
+.box-content {
+    background: var(--colorGris2);
+    height: 60vh;
+}
+
+.box-content-data {
+    margin-top: -2.3rem !important;
+    height: 10vh;
+}
+
+.box-content-text {
+    color: var(--colorPrimario);
+    font-size: 1.8em;
+}
+
+.box-content-footer {
+    height: 5vh;
+}
+
+.modal-custom-item{
+    background: bisque;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 65vh;
+}
+
+.custom-title {
+    height: 2vh;
+}
+
+.custom-text{
+    color: white;
+}
+
