@@ -2,7 +2,7 @@ $( document ).ready(function() {
 console.log("Ready!")
 
 $.ajax({
-    url: "",
+    url: "./PHP/SW_mensaje.php",
     type: "POST",
     data:{
         accion: "contador_no_leidas",
@@ -10,10 +10,7 @@ $.ajax({
     },
     datatype:'json',
     
-    success: function(data){
-        $("#conador").html(Response.data)
-    
-    },
+    success: function(data){},
     error: function(){}           
   });
 });
