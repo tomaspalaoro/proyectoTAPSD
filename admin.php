@@ -242,6 +242,15 @@ $paginaActual = 1;
         var modalId = $(e.relatedTarget).attr('data-id');
         $("#borrarUsuario").val( modalId );
     });
+
+
+
+    function verPerfilPaciente(){
+        console.log("click");
+        window.location.href = 'perfil.php';
+    }
+
+
 </script>
 
 <script type="text/javascript" src="./JS/admin.js"></script>

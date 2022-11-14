@@ -50,7 +50,7 @@ $paginaActual = 1;
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="inner-box">
+                    <tr class="inner-box" id="_clickable" style="cursor: pointer">
                         <td>
                             <div class="event-img">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
@@ -99,6 +99,15 @@ $paginaActual = 1;
 
         $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
     });
+
+    $( "#_clickable" ).click(function() {
+        console.log("click");
+        window.location.href = 'perfil.php';
+    });
+
+    /*$( "#_clickable" ).hover(function() {
+        console.log("hover");
+    });*/
 </script>
 </body>
 </html>

@@ -92,12 +92,12 @@ function readUsuarios() {
         $("#datosUsuarios").empty();
 
         for(var i=0; i<request.data.length; i++){
-            $("#datosUsuarios").append("<tr class='_filaUsuario'>");
+            $("#datosUsuarios").append("<tr>");
             var ultimoTr = $("#datosUsuarios tr:last");
             //var ancho = ultimoTr.width();
             //var alto = "125px";
             //ultimoTr.append("<a href='#' style='display: block; position: absolute; width: "+ancho+"; height: "+alto+"'>");
-            ultimoTr.append("<td>"+ '<img src="IMG/avatar1.png" class="rounded-circle shadow-4" style="max-width: 100px;">' + "</td>");
+            ultimoTr.append("<td onclick='verPerfilPaciente()'>"+ '<img src="IMG/avatar1.png" class="rounded-circle shadow-4" style="max-width: 100px;">' + "</td>");
             ultimoTr.append("<td>"+ request.data[i].nombre + "</td>");
             ultimoTr.append("<td>"+ request.data[i].apellido_1 +"&nbsp;"+ request.data[i].apellido_2 + "</td>");
             ultimoTr.append("<td>"+ request.data[i].direccion + "</td>");
