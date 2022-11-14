@@ -58,7 +58,7 @@ $paginaActual = 1;
                         </td>
                         <td>
                             <div class="event-wrap">
-                                <h3><a href="#">Pablo Garcia</a></h3>
+                                <h3><a href="perfil.php">Pablo Garcia</a></h3>
                                 <div class="meta">
                                     <div class="organizers">
                                         Jacarilla
