@@ -83,7 +83,11 @@
                                             <img src="img/icono-modal.png" alt="Icono Modal">
                                         </div>
                                         <div class="col">
-                                            <span class="fs-3">Contador</span>
+                                            <span class="fs-4" id="horas">00</span>
+                                            <span class="fs-5">:</span>
+                                            <span class="fs-4" id="minutos">00</span>
+                                            <span class="fs-5">:</span>
+                                            <span class="fs-4" id="segundos">00</span>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row justify-content-center p-5 gap-5">
@@ -142,6 +146,44 @@
             header.classList.toggle("active-cont")
         })
     });
+    //Identificar botones y span
+    var horasSpan = document.getElementById("horas");
+    var minutosSpan = document.getElementById("minutos");
+    var segundosSpan = document.getElementById("segundos");
+    var startButton = document.getElementById("start");
+    var stopButton = document.getElementById("stop");
+
+    //Duracion total
+    var totalSegundos = 0;
+
+    var miIntervalo;
+    //Llamar a las funciones
+    startButton.addEventListener("click", startInterval);
+    stopButton.addEventListener("click", stopInterval);
+
+    function setTime() {
+        ++totalSegundos;
+        segundosSpan.innerHTML = pad(totalSegundos % 60);
+        minutosSpan.innerHTML = pad(parseInt(totalSegundos / 60));
+        horasSpan.innerHTML = pad(parseInt(totalSegundos/3600));
+    }
+
+    function pad(valor) {
+        var valString = valor + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+    }
+
+    function startInterval() {
+        miIntervalo = setInterval(setTime, 1000);
+    }
+    //Cancela la accion (tiempo)
+    function stopInterval(){
+        clearInterval(miIntervalo);
+    }
 </script>
 <!-- script bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
