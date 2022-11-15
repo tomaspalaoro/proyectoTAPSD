@@ -74,14 +74,41 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row justify-content-center gap-2">
-                                <div class="col-md-5 modal-custom-item">.col-md-3 .ms-auto
-                                    <div class="col">nombre</div>
-                                    <div class="col">Foto perfil</div>
-                                    <div class="col">Contador</div>
-                                    <div class="col">icono L</div>
-                                    <div class="col">icono S</div>
+                                <div class="col-md-5 modal-custom-item">
+                                    <div class="col d-flex flex-column align-items-center justify-content-center gap-3">
+                                        <div class="col">
+                                            <span class="fs-3">Nombre Apellidos</span>
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/icono-modal.png" alt="Icono Modal">
+                                        </div>
+                                        <div class="col">
+                                            <span class="fs-3">Contador</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-center p-5 gap-5">
+                                        <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-start" id="start">
+                                            <img src="img/icons8-llamar-a-hombre-32.png" style="height: 4vh" alt="Llamada">
+                                        </button>
+                                        <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-end" id="stop">
+                                            <img src="img/icons8-llamar-a-hombre-32.png" style="height: 4vh" alt="Llamada">
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 modal-custom-item">.col-md-2 .ms-auto</div>
+                                <div class="col-md-6 modal-custom-item d-flex flex-column justify-content-center">
+                                    <div class="col d-flex flex-column justify-content-start">
+                                        <span>Intereses</span>
+                                        <div>
+                                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                        </div>
+                                    </div>
+                                    <div class="col d-flex flex-column justify-content-start">
+                                        <div class="input-group">
+                                            <span class="input-group-text custom-input-text">Observaciones</span>
+                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
