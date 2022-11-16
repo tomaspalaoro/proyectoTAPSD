@@ -58,7 +58,7 @@ $paginaActual = 1;
                         </td>
                         <td>
                             <div class="event-wrap">
-                                <h3><a href="perfil.php">Pablo Garcia</a></h3>
+                                <h3><a href="perfil.html">Pablo Garcia</a></h3>
                                 <div class="meta">
                                     <div class="organizers">
                                         Jacarilla
@@ -101,9 +101,12 @@ $paginaActual = 1;
     });
 
     $( "#_clickable" ).click(function() {
-        console.log("click");
-        window.location.href = 'perfil.php';
+        verPerfilPaciente("1");
     });
+
+    function verPerfilPaciente(idPaciente){
+        window.location.href = 'perfil.html?paciente='+idPaciente;
+    }
 
     /*$( "#_clickable" ).hover(function() {
         console.log("hover");

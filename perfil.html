@@ -34,7 +34,7 @@ require "./Conexion.php";
             <div class="mb-4 mb-3">
                 <div class="text-center">
                     <img id="_fotoPaciente" class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                    <h1>Pablo Garcia</h1>
+                    <h1 id="_nombrePaciente">Pablo Garcia</h1>
                     <button class="btn btn-primary btn-icon" type="button">Llamar<img src="IMG/icons8-teléfono-48.png"/></button>
                 </div>
             </div>
@@ -47,8 +47,8 @@ require "./Conexion.php";
                         <div class="row gx-3 mb-3">
                             <!-- Form Group-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Localidad</label>
-                                <input class="form-control _campoAEditar" id="inputOrgName" type="text" value="Jacarilla" readonly>
+                                <label class="small mb-1" for="_localidad">Localidad</label>
+                                <input class="form-control _campoAEditar" id="_localidad" type="text" value="Jacarilla" readonly>
                             </div>
                             <!-- Form Group-->
                             <div class="col-md-6">
@@ -58,20 +58,20 @@ require "./Conexion.php";
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Correo</label>
-                            <input class="form-control _campoAEditar" id="inputEmailAddress" type="email" value="name@example.com" readonly>
+                            <label class="small mb-1" for="_correo">Correo</label>
+                            <input class="form-control _campoAEditar" id="_correo" type="email" value="name@example.com" readonly>
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Numero de telefono</label>
-                                <input class="form-control _campoAEditar" id="inputPhone" type="tel" value="555-123-4567" readonly>
+                                <label class="small mb-1" for="_telefono">Numero de telefono</label>
+                                <input class="form-control _campoAEditar" id="_telefono" type="tel" value="555-123-4567" readonly>
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Cumpleaños</label>
-                                <input class="form-control datepicker _campoAEditar" id="inputBirthday" type="date" name="birthday" value="1938-10-06" readonly>
+                                <label class="small mb-1" for="_fecha">Cumpleaños</label>
+                                <input class="form-control datepicker _campoAEditar" id="_fecha" type="date" name="birthday" value="1938-10-06" readonly>
                             </div>
                         </div>
                         <div class="d-flex flex-row justify-content-end p-1">
@@ -122,9 +122,13 @@ require "./Conexion.php";
         $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
     });
 </script>
+<script>
+
+</script>
 
 
 <script type="text/javascript" src="./JS/tecnico.js"></script>
+<script type="text/javascript" src="./JS/perfil.js"></script>
 <!-- script bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

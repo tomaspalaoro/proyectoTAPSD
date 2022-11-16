@@ -77,21 +77,21 @@
                 );
             break;
 
-            
+
 
 
             case "getUsuario":
 
                 $array = array(
                     "success"=>true,
-                    "msg"=>"getTecnico",
+                    "msg"=>"getUsuario a partir de id",
                     "data"=>Usuario::getUsuario($id),
                     
                 );
 
             break;
 
-            
+
 
             default:
             // JSON acción no soportada

@@ -45,7 +45,7 @@
             }
         }
 
-        public static function getUsuario($email=null){
+        public static function getUsuario($id=null){
 
             include("../Conexion.php");
 
@@ -54,7 +54,7 @@
 
 
             try{
-                $sql = "SELECT * from usuario WHERE email = '$email'";
+                $sql = "SELECT * from usuario WHERE id = '$id'";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
