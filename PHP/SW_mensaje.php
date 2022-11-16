@@ -2,37 +2,39 @@
 require("Mensaje.php");
 
 $accion = isset($_POST['accion'])? $_POST['accion']:null;
-$data=Mensaje::contador_no_leidas();
-//print_r($data);
-//JSON
+$email = isset($_POST['email'])? $_POST['email']:null;
+$email='admin@admin';
+//JSON estructura
 $data='';
 $success='True';
-$msg='Notificaciones pendientes';
+$msg='';
+$array=[];
 try{
 
     switch($accion){
-        case "contador_no_leidas":
-           
+        case "__find": //Trae mensaje,hora 
+            
+            $data=Mensaje::__find($email);
             $array=array(
                 "data"=>$data,
                 "success"=>"true",
-                "msg"=>$msg
+                "msg"=>"__find",
+               
             );
-
-        break;
-        case "cargar-notificaciones":
-            //$data=Mensaje::__find();
+            break;
+    
+        case "actualizar_notificaciones":
+            break  ;
+        case "num_notificaciones":
+            
+            $data=Mensaje::num_notificaciones($email);
             $array=array(
                 "data"=>$data,
-                "success"=>$success,
-                "msg"=>$msg
+                "success"=>"true",
+                "msg"=>"Num notificaciones"
             );
-            
 
-            break;
-        case "actualizar-notificaciones":
-
-            break  ;
+            break;    
 
         default:
          // JSON acción no soportada
@@ -42,8 +44,6 @@ try{
             );
             break; 
     };
-    
-
 
 
 } catch (Exception $e) {
@@ -51,11 +51,14 @@ try{
     $json = json_encode(array(
         "success"=>false,
         "msg"=>$e->getMessage()
+    
     ));
 }
+if($json=json_encode($array)){
+    echo $json;
+}else echo("No va manito");
 
-$json = json_encode($array);
-//print_r($json);
+
 
 
 
