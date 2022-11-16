@@ -3,6 +3,8 @@ require("Mensaje.php");
 
 $accion = isset($_POST['accion'])? $_POST['accion']:null;
 $email = isset($_POST['email'])? $_POST['email']:null;
+
+//TODO email a pelo->necesario TOken de la session
 $email='admin@admin';
 //JSON estructura
 $data='';

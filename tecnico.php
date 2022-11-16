@@ -19,6 +19,7 @@ require "./Conexion.php";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="" src="./JS/Mensaje.js"></script>
     <!-- JAVASCRIPT tecnico.js -->
 
 </head>

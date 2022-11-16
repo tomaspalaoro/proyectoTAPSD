@@ -6,7 +6,7 @@ $('header').click(function(e){
       $("#notification-latest").hide();
     }
   });
-
+  //TODO el email esta a pelo
   $.get("navbar_sidebar.html", function(data){
     setInterval(function() {
       var request = $.ajax({
