@@ -9,3 +9,24 @@ if (!isset($_SESSION['sesion'])) {
     die();
 }
 
+/*
+
+<?php
+include("../Conexion.php");
+include("Tecnico_class.php");
+
+
+
+
+//Comprueba si existe sesión, en caso negativo redirige a login
+if (Tecnico::getToken("dmdm")) {
+    
+    
+    
+}else{
+    header("Location: ./login.php");
+
+    die();
+}
+*/
+
