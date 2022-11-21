@@ -91,10 +91,10 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row justify-content-center p-5 gap-5">
-                                        <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-start" id="start">
+                                        <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-start" id="startLlamada">
                                             <img src="img/icons8-llamar-a-hombre-32.png" style="height: 4vh" alt="Llamada">
                                         </button>
-                                        <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-end" id="stop">
+                                        <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-end" id="stopLlamada">
                                             <img src="img/icons8-llamar-a-hombre-32.png" style="height: 4vh" alt="Llamada">
                                         </button>
                                     </div>
@@ -103,13 +103,13 @@
                                     <div class="col d-flex flex-column justify-content-start">
                                         <span>Intereses</span>
                                         <div>
-                                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                            <span>Intereses del usuario</span>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column justify-content-start">
                                         <div class="input-group">
                                             <span class="input-group-text custom-input-text">Observaciones</span>
-                                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                                            <textarea class="form-control" aria-label="With textarea" id="observaciones"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -150,8 +150,8 @@
     var horasSpan = document.getElementById("horas");
     var minutosSpan = document.getElementById("minutos");
     var segundosSpan = document.getElementById("segundos");
-    var startButton = document.getElementById("start");
-    var stopButton = document.getElementById("stop");
+    var startButton = document.getElementById("startLlamada");
+    var stopButton = document.getElementById("stopLlamada");
 
     //Duracion total
     var totalSegundos = 0;
