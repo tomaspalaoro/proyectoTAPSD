@@ -54,6 +54,16 @@
 
             break;
 
+            //PACIENTES ASIGNADOS EN EL INDEX
+            case "getAsignados":
+
+                $array = array(
+                    "success"=>true,
+                    "msg"=>"getAsignados",
+                    "data"=>Usuario::getAsignados(),
+                );
+                break;
+
             //UPDATE
             case "editarusuario":
 

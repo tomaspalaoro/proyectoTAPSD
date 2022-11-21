@@ -85,6 +85,25 @@
             }
         }
 
+        public static function getAsignados(){
+
+            include("../Conexion.php");
+            $pdo=Conexion::getInstance();
+
+            try{
+                //TODO email del localstorage
+                $sql = "SELECT * FROM tecnico_usuario tu LEFT JOIN usuario u ON (tu.id_usuario = u.id) WHERE tu.id_tecnico = 'admin@admin'";
+
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            }catch (Excepcion $e){
+                return $e->getMessage();
+            }
+        }
+
         public static function deleteUsuario($id=null){
 
             include("../Conexion.php");

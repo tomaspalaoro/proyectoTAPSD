@@ -50,7 +50,7 @@ $paginaActual = 1;
                         <th class="text-center" scope="col">Asignado</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="datosUsuarios">
                     <!--
                     <tr class="inner-box" id="_clickable" style="cursor: pointer">
                         <td>
