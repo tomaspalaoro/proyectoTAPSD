@@ -92,7 +92,7 @@
 
             try{
                 //TODO email del localstorage
-                $sql = "SELECT * FROM tecnico_usuario tu LEFT JOIN usuario u ON (tu.id_usuario = u.id) WHERE tu.id_tecnico = 'admin@admin'";
+                $sql = "SELECT * FROM usuario u LEFT JOIN tecnico_usuario tu ON (tu.id_usuario = u.id) LEFT JOIN llamadas ll ON (ll.id_usuario = u.id) WHERE tu.id_tecnico = 'admin@admin'";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
