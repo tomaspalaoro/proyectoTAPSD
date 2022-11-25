@@ -20,7 +20,6 @@
             $this->EMAIL = $email;
             $this->PASSWORD = $password;
             $this->NOMBRE = $nombre;
-
         }
 
         public function set($atributo, $contenido){

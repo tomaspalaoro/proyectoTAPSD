@@ -1,17 +1,21 @@
 <?php
+//include ("PHP/variables.inc.php");
+require("PHP/auth.php");
+require "Conexion.php";
 ?>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="IMG/favicon.ico">
-    <title>Llamadas</title>
+    <title>Listado Llamadas</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- css nuestro -->
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/llamada.css">
     <link rel="stylesheet" href="CSS/variables.css">
+    <link rel="stylesheet" href="CSS/listadoCrud.css">
     <!-- iconos bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- JQUERY -->
@@ -24,43 +28,10 @@
 <div id="navbarsidebar"></div>
 
 <section class="p-4 my-container">
-    <div class="container-xl">
-        <div class="row row-cols-1 gap-5">
-            <!--Titulo-->
-            <span class="col fs-2 fw-bold custom-title">Llamadas</span>
-            <!--Caja Llamadas Futuras-->
-            <div class="col">
-                <div class="row p-2 box-title">
-                    <span class="fs-2 fw-bold custom-text">Llamadas Futuras</span>
-                </div>
-                <div class="row p-5 box-content">
-                    <div class="row p-1 bg-light box-content-data">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                            Modal
-                        </button>
-                    </div>
-                    <div class="row p-1 bg-light box-content-data">
-                        <span class="box-content-text">Llamadas Futuras</span>
-                    </div>
-                    <div class="row p-1 bg-light box-content-data">
-                        <span class="box-content-text">Llamadas Futuras</span>
-                    </div>
-                    <div class="row p-1 bg-light box-content-data">
-                        <span class="box-content-text">Llamadas Futuras</span>
-                    </div>
-                </div>
-            </div>
-            <!--Caja Llamadas Atendidas-->
-            <div class="col">
-                <div class="row p-2 box-title">
-                    <span class="fs-2 fw-bold custom-text">Llamadas Atendidas</span>
-                </div>
-                <div class="row box-content">
-
-                </div>
-            </div>
-        </div>
-
+    <div class="row p-1 bg-light box-content-data">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" style="width: 100px">
+            Modal
+        </button>
         <!-- Modal -->
         <div class="modal" id="myModal">
             <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
@@ -119,7 +90,46 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Tabla Listado Llamadas-->
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2><b>Listado Llamadas</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Tecnico</th>
+                        <th>Usuario</th>
+                        <th>Titulo</th>
+                        <th>Hora Inicio</th>
+                        <th>Duracion</th>
+                    </tr>
+                    </thead>
+                    <tbody id="datosLlamadas">
+                        <tr>
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text">Mostrando <b><?php ?></b> de <b><?php ?></b> llamadas</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Anterior</a></li>
+                        <li class="page-item active"><a href="#" class="page-link"><?php ?></a></li>
+                        <li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -146,46 +156,10 @@
             header.classList.toggle("active-cont")
         })
     });
-    //Identificar botones y span
-    var horasSpan = document.getElementById("horas");
-    var minutosSpan = document.getElementById("minutos");
-    var segundosSpan = document.getElementById("segundos");
-    var startButton = document.getElementById("startLlamada");
-    var stopButton = document.getElementById("stopLlamada");
-
-    //Duracion total
-    var totalSegundos = 0;
-
-    var miIntervalo;
-    //Llamar a las funciones
-    startButton.addEventListener("click", startInterval);
-    stopButton.addEventListener("click", stopInterval);
-
-    function setTime() {
-        ++totalSegundos;
-        segundosSpan.innerHTML = pad(totalSegundos % 60);
-        minutosSpan.innerHTML = pad(parseInt(totalSegundos / 60));
-        horasSpan.innerHTML = pad(parseInt(totalSegundos/3600));
-    }
-
-    function pad(valor) {
-        var valString = valor + "";
-        if (valString.length < 2) {
-            return "0" + valString;
-        } else {
-            return valString;
-        }
-    }
-
-    function startInterval() {
-        miIntervalo = setInterval(setTime, 1000);
-    }
-    //Cancela la accion (tiempo)
-    function stopInterval(){
-        clearInterval(miIntervalo);
-    }
 </script>
 <!-- script bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<!--JS Contador Llamada-->
+<script type="text/javascript" src="JS/llamada.js"></script>
 </body>
 </html>
