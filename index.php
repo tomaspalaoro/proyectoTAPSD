@@ -21,10 +21,11 @@ $paginaActual = 1;
     <title>Inicio</title>
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <!--Bootstrap 5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- JS propio -->
+    <script type="text/javascript" src="./JS/index.js"></script>
     <!--Archivo externo css-->
     <link rel="stylesheet" href="CSS/variables.css">
     <link rel="stylesheet" href="CSS/listadoIndex.css">
@@ -49,7 +50,8 @@ $paginaActual = 1;
                         <th class="text-center" scope="col">Asignado</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="datosUsuarios">
+                    <!--
                     <tr class="inner-box" id="_clickable" style="cursor: pointer">
                         <td>
                             <div class="event-img">
@@ -84,7 +86,7 @@ $paginaActual = 1;
                                 <img src="IMG/tecnicoDefaultPic.jpg" style="width: 50px">
                             </div>
                         </td>
-                    </tr>
+                    </tr>-->
                     </tbody>
                 </table>
             </div>
