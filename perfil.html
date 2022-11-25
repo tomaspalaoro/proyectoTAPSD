@@ -35,7 +35,7 @@ require "./Conexion.php";
                 <div class="text-center">
                     <img id="_fotoPaciente" class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
                     <h1 id="_nombrePaciente">Pablo Garcia</h1>
-                    <button class="btn btn-primary btn-icon" type="button">Llamar<img src="IMG/icons8-teléfono-48.png"/></button>
+                    <button class="btn btn-primary btn-icon" type="button" data-bs-toggle="modal" data-bs-target="#myModal">Llamar<img src="IMG/icons8-teléfono-48.png"/></button>
                 </div>
             </div>
             <!-- Account details card-->
@@ -84,6 +84,69 @@ require "./Conexion.php";
                 <div class="card-header">Observaciones</div>
                 <div class="card-body">
                     <textarea class="form-control rounded-0" ></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Realizar Llamada</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center gap-2">
+                            <div class="col-md-5 modal-custom-item">
+                                <div class="col d-flex flex-column align-items-center justify-content-center gap-3">
+                                    <div class="col">
+                                        <span class="fs-3">Nombre Apellidos</span>
+                                    </div>
+                                    <div class="col">
+                                        <img src="img/icono-modal.png" alt="Icono Modal">
+                                    </div>
+                                    <div class="col">
+                                        <span class="fs-4" id="horas">00</span>
+                                        <span class="fs-5">:</span>
+                                        <span class="fs-4" id="minutos">00</span>
+                                        <span class="fs-5">:</span>
+                                        <span class="fs-4" id="segundos">00</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-center p-5 gap-5">
+                                    <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-start" id="startLlamada">
+                                        <img src="img/icons8-llamar-a-hombre-32.png" style="height: 4vh" alt="Llamada">
+                                    </button>
+                                    <button class="col-md-5 p-5 d-flex flex-row justify-content-center icon-llamada-end" id="stopLlamada">
+                                        <img src="img/icons8-llamar-a-hombre-32.png" style="height: 4vh" alt="Llamada">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 modal-custom-item d-flex flex-column justify-content-center">
+                                <div class="col d-flex flex-column justify-content-start">
+                                    <span>Intereses</span>
+                                    <div>
+                                        <span>Intereses del usuario</span>
+                                    </div>
+                                </div>
+                                <div class="col d-flex flex-column justify-content-start">
+                                    <div class="input-group">
+                                        <span class="input-group-text custom-input-text">Observaciones</span>
+                                        <textarea class="form-control" aria-label="With textarea" id="observaciones"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
                 </div>
             </div>
         </div>

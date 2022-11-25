@@ -1,5 +1,7 @@
 
 $( document ).ready(function() {
+    llamada();
+
     // Cogemos los valores pasados por get
     var paciente;
     var valores=getGET();
@@ -70,5 +72,48 @@ function getGET()
             get[tmp[0]] = unescape(decodeURI(tmp[1]));
         }
         return get;
+    }
+}
+
+function llamada(){
+    const date = new Date();
+    console.log(" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds())
+    //Identificar botones y span
+    var horasSpan = document.getElementById("horas");
+    var minutosSpan = document.getElementById("minutos");
+    var segundosSpan = document.getElementById("segundos");
+    var startButton = document.getElementById("startLlamada");
+    var stopButton = document.getElementById("stopLlamada");
+
+    //Duracion total
+    var totalSegundos = 0;
+
+    var miIntervalo;
+    //Llamar a las funciones
+    startButton.addEventListener("click", startInterval);
+    stopButton.addEventListener("click", stopInterval);
+
+    function setTime() {
+        ++totalSegundos;
+        segundosSpan.innerHTML = pad(totalSegundos % 60);
+        minutosSpan.innerHTML = pad(parseInt(totalSegundos / 60));
+        horasSpan.innerHTML = pad(parseInt(totalSegundos/3600));
+    }
+
+    function pad(valor) {
+        var valString = valor + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+    }
+
+    function startInterval() {
+        miIntervalo = setInterval(setTime, 1000);
+    }
+    //Cancela la accion (tiempo)
+    function stopInterval(){
+        clearInterval(miIntervalo);
     }
 }

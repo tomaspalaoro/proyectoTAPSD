@@ -22,3 +22,45 @@ h1 {
 #_fotoPaciente{
     width: 200px;
 }
+
+/*MODAL LLAMADA*/
+.modal-custom-item{
+    background: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 65vh;
+}
+
+.icon-llamada-start {
+    width: 50px;
+    height: 15vh;
+    border: none;
+    align-items: center;
+    border-radius: 200px;
+    background: limegreen;
+}
+
+.icon-llamada-end {
+    width: 50px;
+    height: 15vh;
+    border: none;
+    align-items: center;
+    border-radius: 200px;
+    background: red;
+}
+
+.custom-input-text{
+    height: 30.5vh;
+}
+
+textarea {
+    resize: none;
+}
+
+.custom-title {
+    height: 2vh;
+}
+
+.custom-text{
+    color: white;
+}
