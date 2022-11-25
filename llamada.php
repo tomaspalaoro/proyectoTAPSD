@@ -117,10 +117,11 @@ require "Conexion.php";
                         <th>Titulo</th>
                         <th>Hora Inicio</th>
                         <th>Duracion</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody id="datosLlamadas">
-                        <tr>
+                    <tr>
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -130,6 +131,40 @@ require "Conexion.php";
                         <li class="page-item active"><a href="#" class="page-link"><?php ?></a></li>
                         <li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ver Mas Informacion-->
+    <div class="modal" id="#infoLlamadaModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Informacion Llamada</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row gap-2">
+                            <div class="col-md-6 modal-custom-item d-flex flex-column justify-content-center">
+                                <div class="col d-flex flex-column justify-content-start">
+                                    <span>Intereses</span>
+                                    <div>
+                                        <span>Intereses del usuario</span>
+                                    </div>
+                                </div>
+                                <div class="col d-flex flex-column justify-content-start">
+                                    <span>Observaciones</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
