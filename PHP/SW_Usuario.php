@@ -55,12 +55,12 @@
             break;
 
             //PACIENTES ASIGNADOS EN EL INDEX
-            case "getAsignados":
+            case "getMisPacientes":
 
                 $array = array(
                     "success"=>true,
-                    "msg"=>"getAsignados",
-                    "data"=>Usuario::getAsignados(),
+                    "msg"=>"getMisPacientes",
+                    "data"=>Usuario::getMisPacientes(),
                 );
                 break;
 

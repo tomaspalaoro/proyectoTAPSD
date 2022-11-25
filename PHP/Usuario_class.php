@@ -85,7 +85,7 @@
             }
         }
 
-        public static function getAsignados(){
+        public static function getMisPacientes(){
 
             include("../Conexion.php");
             $pdo=Conexion::getInstance();

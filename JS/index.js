@@ -7,7 +7,7 @@ function rellenarTabla() {
         url: "./PHP/SW_Usuario.php",
         method: "POST",
         data: {
-            accion: "getAsignados",
+            accion: "getMisPacientes",
         },
         dataType: "json"
     });
