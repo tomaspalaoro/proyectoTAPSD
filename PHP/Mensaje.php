@@ -16,13 +16,16 @@ class Mensaje{
         $this->id_receptor=$id_receptor;
     }
     
-    static public function __find($email){
+    static public function __find($email_emisor,$email_receptor){
 
        
         $conex=Conexion::getInstance();        
-        $sql="SELECT  m.mensaje,m.fecha,t.nombre
+        $sql="SELECT t.avatar,m.id_autor,m.mensaje,m.fecha
         FROM mensajes m,tecnico t  
-        WHERE t.email=m.id_receptor AND m.estado=0 AND  id_receptor='".$email."'";
+        WHERE t.email=m.id_receptor AND m.estado=0 OR  (m.id_receptor='".$email_receptor." AND m.id_autor=".$email_emisor.") OR ( m.id_receptor=".$email_receptor." AND m.id_autor=".$email_emisor.") 
+	    GROUP BY m.mensaje
+        ORDER BY fecha DESC";
+     
             $stmt=$conex->prepare($sql);
             $stmt->execute();
             $respuesta=$stmt->fetchALL(PDO::FETCH_ASSOC);
@@ -30,19 +33,19 @@ class Mensaje{
         return $respuesta;
     }
     
-    static public function actualizar_estado(){
+    static public function actualizar_estado($email_emisor,$email_receptor){
         $singleton=Conexion::getInstance();
 
-        $sql = "UPDATE mensajes SET estado = 1 WHERE estado = 0";	
+        $sql = "UPDATE mensajes SET estado = 1 WHERE estado = 0 AND  id_receptor='".$email_receptor."' ";	
         $stmt=$singleton->prepare($sql);
         $stmt->execute();
     }
-    static public function num_notificaciones($email){
+    static public function num_notificaciones($email_receptor){
         try{
             $singleton=Conexion::getInstance();
             $sql="SELECT COUNT(*) AS num_notificaciones 
             FROM mensajes
-            WHERE estado=0 AND id_receptor='".$email."'";
+            WHERE estado=0 AND id_receptor='".$email_receptor."'";
             $stmt=$singleton->prepare($sql);
             $stmt->execute();
             $respuesta=$stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -52,6 +55,18 @@ class Mensaje{
         }
       
         return $respuesta;
+    }
+    static public function insertar_mensaje($mensaje,$email_emisor,$email_receptor){
+        try{
+            $singleton=Conexion::getInstance();
+            $sql="insert into mensajes values ($mensaje,0, now(),$email_emisor,$email_receptor)";
+            $stmt=$singleton->prepare($sql);
+            $stmt->execute();
+
+        }catch(Exception $e){
+
+            throw new Exception($e->getMessage(), 1);
+        }
     }
 
 }

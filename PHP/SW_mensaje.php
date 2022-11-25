@@ -4,24 +4,25 @@ require("Mensaje.php");
 $accion = isset($_POST['accion'])? $_POST['accion']:null;
 $email = isset($_POST['email'])? $_POST['email']:null;
 
-//TODO email a pelo->necesario TOken de la session
-$email='admin@admin';
+//TODO email a pelo
+//$email_emisor='admin@admin';
+$email_receptor="tomas@prueba";
+$array=[];
 //JSON estructura
 $data='';
 $success='True';
 $msg='';
-$array=[];
+
 try{
 
     switch($accion){
-        case "__find": //Trae mensaje,hora 
+        case "__find": //Trae avatar,email autor,mensaje,fecha
             
-            $data=Mensaje::__find($email);
+            $data=Mensaje::__find($email_emisor,$email_receptor);
             $array=array(
                 "data"=>$data,
                 "success"=>"true",
-                "msg"=>"__find",
-               
+                "msg"=>"__find",              
             );
             break;
     
@@ -29,15 +30,17 @@ try{
             break  ;
         case "num_notificaciones":
             
-            $data=Mensaje::num_notificaciones($email);
+            $data=Mensaje::num_notificaciones($email_receptor);
             $array=array(
                 "data"=>$data,
                 "success"=>"true",
                 "msg"=>"Num notificaciones"
             );
 
-            break;    
-
+            break;
+        case "insertar_mensaje":
+            Mensaje::insertar_mensaje($mensaje,$email_emisor,$email_receptor);  
+                    
         default:
          // JSON acción no soportada
          $array = array(

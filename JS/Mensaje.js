@@ -1,11 +1,14 @@
 $( document ).ready(function() {
 console.log("Ready!")
 
-$('header').click(function(e){
+$("header").click(function(e){
     if ( e.target.id != 'icon-header'){
       $("#notification-latest").hide();
+      $("#notification-count").hide();
     }
   });
+
+  
   //TODO el email esta a pelo
   $.get("navbar_sidebar.html", function(data){
     setInterval(function() {
@@ -28,6 +31,24 @@ $('header').click(function(e){
   }, 5000);
     
   });
+  $.get("conversacion.html",function(data){
+    $.ajax({
+      url:"./PHP/SW_mensaje.php",
+      type:"POST",
+      data:{
+          accion:'__find',
+        
+      },
+    dataType:"json",
+    success:function(data){
+      for(i=0;i<data.length;i++){ 
+        console.log(data[i]);
+        
+       }
+
+    }
+    })
+  })
 
   $.get("navbar_sidebar.html", function(data){
     $("#notification-count"),function(){
@@ -40,8 +61,8 @@ $('header').click(function(e){
       dataType :" JSON",
       success: function(data){
             $("#notification-count").remove();                  
-            //$("#notification-latest").show();
-            //$("#notification-latest").html(data);
+            $("#notification-latest").show();
+            $("#notification-latest").html(data);
         
       },     
     });
