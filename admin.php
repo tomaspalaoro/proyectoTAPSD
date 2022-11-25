@@ -1,6 +1,6 @@
 <?php
 //include ("PHP/variables.inc.php");
-require("PHP/auth.php");
+/*require("PHP/auth.php");*/
 require "Conexion.php";
 
 
@@ -218,7 +218,7 @@ $paginaActual = 1;
         
         $("#navbarsidebar").html(data);
 
-        $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
+        $("#nombreApellidos").html("");
     });
 
 
@@ -245,5 +245,6 @@ $paginaActual = 1;
 </script>
 
 <script type="text/javascript" src="./JS/admin.js"></script>
+<script type="text/javascript" src="JS/sesion.js"></script>
 </body>
 </html>

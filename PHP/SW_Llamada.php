@@ -1,6 +1,6 @@
 <?php
     include('Llamada_class.php');
-    include('auth.php');
+    /*include('auth.php');*/
 
     $accion = isset($_POST['accion'])? $_POST['accion']:null;
     $id_tecnico = isset($_POST['id_tecnico'])? $_POST['id_tecnico']:null;

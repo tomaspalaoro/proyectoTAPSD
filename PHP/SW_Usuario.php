@@ -1,6 +1,6 @@
 <?php
     include('Usuario_class.php');
-    include('auth.php');
+    /*include('auth.php');*/
 
     $accion = isset($_POST['accion'])? $_POST['accion']:null;
     $id = isset($_POST['id'])? $_POST['id']:null;
