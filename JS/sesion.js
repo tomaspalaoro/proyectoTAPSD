@@ -11,9 +11,14 @@ $( document ).ready(function() {
     auth.done(function( request ) {
         if(request.success == false){
             console.log("No hay sesion");
-            window.location.replace(request.data);
+            /*REDIRIGIR A LOGIN*/
+            var urlLogin = request.data;
+            window.location.replace(urlLogin);
         }else{
             console.log("Sesion correcta");
+            /*GUARDAR EMAIL EN SESSION STORAGE*/
+            var email = request.data;
+            sessionStorage.setItem("miSesion", email);
         };
     });
 });

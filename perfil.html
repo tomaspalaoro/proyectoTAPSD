@@ -182,7 +182,7 @@ require "./Conexion.php";
         console.log("a")
         $("#navbarsidebar").html(data);
 
-        $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
+        $("#nombreApellidos").html(sessionStorage.getItem("miSesion"));
     });
 </script>
 <script>

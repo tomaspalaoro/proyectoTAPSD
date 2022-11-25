@@ -1,17 +1,17 @@
 <?php
 include("variables.inc.php");
 session_start();
-// Si no está definido el id_usuario retorna JSON de error
+
 if (isset($_SESSION['sesion'])){
-// Cierra sesión
+    /*HAY SESION, DEVOLVER EMAIL*/
     echo json_encode(array(
-        "data" => ruta_login,
+        "data" => $_SESSION['sesion'],
         "msg" => "auth:Hay sesion",
         "success" => true
     ));
-// Finaliza para que no ejecute el código del archivo que lo incluya
-    exit();
+    //exit();
 }else{
+    /*NO HAY SESION, DEVOLVER RUTA LOGIN*/
     session_destroy();
     echo json_encode(array(
         "data" => ruta_login,
@@ -20,24 +20,5 @@ if (isset($_SESSION['sesion'])){
     ));
 }
 
-/*
-
-<?php
-include("../Conexion.php");
-include("Tecnico_class.php");
-
-
-
-
-//Comprueba si existe sesión, en caso negativo redirige a login
-if (Tecnico::getToken("dmdm")) {
-
-
-
-}else{
-    header("Location: ./login.php");
-
-    die();
-}
-*/
+//if (Tecnico::getToken("dmdm")) {
 

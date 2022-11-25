@@ -85,7 +85,7 @@
 
         $("#navbarsidebar").html(data);
 
-        $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
+        $("#nombreApellidos").html(sessionStorage.getItem("miSesion"));
     });
 
     $( "#_clickable" ).click(function() {
