@@ -33,6 +33,6 @@ $InsertNuevoEvento = "INSERT INTO calendario(
   //$sth=$con->prepare($InsertNuevoEvento);
   $stmt->execute();
 
-header("Location:index.php?e=1");
+header("Location:index.html?e=1");
 
 ?>

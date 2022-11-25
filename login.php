@@ -5,7 +5,7 @@ session_start();
 //Si ya existe sesión redirigir a home
 if (isset($_SESSION['sesion'])) {
     //redirigir a pagina principal
-    header("Location: index.php");
+    header("Location: index.html");
 }
 ?>
 <html lang="es">

@@ -32,6 +32,6 @@ $UpdateProd = ("UPDATE calendario
   $stmt->execute();
   
 
-header("Location:index.php?ea=1");
+header("Location:index.html?ea=1");
 exit;
 ?>

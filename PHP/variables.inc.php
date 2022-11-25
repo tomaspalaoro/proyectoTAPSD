@@ -13,7 +13,7 @@ if (!defined('DB_PASS')) define('DB_PASS',"");
 
 if (!defined('ruta_admin')) define('ruta_admin',url_base."proyectoTAPSD/admin.php");
 if (!defined('ruta_login')) define('ruta_login',url_base."proyectoTAPSD/login.php");
-if (!defined('ruta_index')) define('ruta_index',url_base."proyectoTAPSD/index.php");
+if (!defined('ruta_index')) define('ruta_index',url_base."proyectoTAPSD/index.html");
 if (!defined('ruta_tecnico')) define('ruta_tecnico',url_base."proyectoTAPSD/tecnico.php");
 if (!defined('ruta_logout')) define('ruta_logout',url_base."proyectoTAPSD/PHP/logout.php");
 if (!defined('ruta_registrar')) define('ruta_registrar',url_base."proyectoTAPSD/PHP/registrar.php");

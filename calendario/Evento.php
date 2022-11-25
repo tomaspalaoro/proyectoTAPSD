@@ -60,7 +60,7 @@ static public function __nuevoEvento(){
   	$stmt=$Singleton->prepare($InsertNuevoEvento);
 	 	$stmt->execute();
 
-  header("Location:index.php?e=1");
+  header("Location:index.html?e=1");
 }
 static public function __Update(){
 	$Singleton=Singleton::getInstance();
@@ -89,7 +89,7 @@ static public function __Update(){
 	 	$stmt=$Singleton->prepare($UpdateProd);
 	 	$stmt->execute();
 
-	 	header("Location:index.php?ea=1");
+	 	header("Location:index.html?ea=1");
 		exit;
 
 }
