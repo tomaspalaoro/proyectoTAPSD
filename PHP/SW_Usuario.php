@@ -56,11 +56,13 @@
 
             //PACIENTES ASIGNADOS EN EL INDEX
             case "getMisPacientes":
+                session_start();
+                $idTecnico = isset($_SESSION['sesion'])? $_SESSION['sesion']:"admin@admin";
 
                 $array = array(
                     "success"=>true,
                     "msg"=>"getMisPacientes",
-                    "data"=>Usuario::getMisPacientes(),
+                    "data"=>Usuario::getMisPacientes($idTecnico),
                 );
                 break;
 

@@ -44,8 +44,7 @@ function getTecnico() {
         method: "POST",
         data: {
             accion: "getTecnico",
-            //CAMBIAR EL EMAIL POR EL LOCALSTORAGE
-            email: $('#sesion').val()
+            email: sessionStorage.getItem("miSesion")
         },
         dataType: "json"
     });
