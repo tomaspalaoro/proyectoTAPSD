@@ -30,9 +30,8 @@ $InsertNuevoEvento = "INSERT INTO calendario(
   $Singleton=Singleton::getInstance();
 
   $stmt=$Singleton->prepare($InsertNuevoEvento);
-  //$sth=$con->prepare($InsertNuevoEvento);
   $stmt->execute();
 
-header("Location:index.html?e=1");
+header("Location:index.php");
 
 ?>
