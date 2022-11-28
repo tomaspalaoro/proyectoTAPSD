@@ -24,6 +24,7 @@ class Llamada_class {
     //Crear Llamadas
     public function crearLlamada(){
         //Conexion BD
+        include("../Conexion.php");
         $pdo=Conexion::getInstance();
         try{
             $sql="INSERT INTO llamadas VALUES ($ID_TECNICO,$ID_USUARIO,$TITULO
