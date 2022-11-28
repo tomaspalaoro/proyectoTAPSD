@@ -103,6 +103,24 @@
             }
         }
 
+        public static function nuevoPacienteAsignado($tecnico, $usuario){
+            include("../Conexion.php");
+            $pdo=Conexion::getInstance();
+            try {
+                if (empty($usuario))
+                    throw new Exception("Usuario vacio");
+
+                $sql = "INSERT INTO tecnico_usuario values ('$tecnico', '$usuario')";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                return "$usuario insertado";
+
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
         public static function deleteUsuario($id=null){
 
             include("../Conexion.php");
