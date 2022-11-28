@@ -1,6 +1,6 @@
 <?php
     include('Usuario_class.php');
-    include('auth.php');
+    /*include('auth.php');*/
 
     $accion = isset($_POST['accion'])? $_POST['accion']:null;
     $id = isset($_POST['id'])? $_POST['id']:null;
@@ -9,7 +9,8 @@
     //$data = json_decode(file_get_contents('php://input'), true);
     $arrUsuario = isset($_POST["data"])? $_POST["data"]:[];
 
-
+    $tecnico = isset($_POST['tecnico'])? $_POST['tecnico']:"admin@admin";
+    $usuario = isset($_POST['usuario'])? $_POST['usuario']:"1";
 
     //Array Inicial
     $array = array(
@@ -56,11 +57,33 @@
 
             //PACIENTES ASIGNADOS EN EL INDEX
             case "getMisPacientes":
+                session_start();
+                $idTecnico = isset($_SESSION['sesion'])? $_SESSION['sesion']:"admin@admin";
 
                 $array = array(
                     "success"=>true,
                     "msg"=>"getMisPacientes",
-                    "data"=>Usuario::getMisPacientes(),
+                    "data"=>Usuario::getMisPacientes($idTecnico),
+                );
+                break;
+
+            //PESTAÑA ADMIN EDITAR TECNICO
+            case "getPacientesDeTecnico":
+
+                $array = array(
+                    "success"=>true,
+                    "msg"=>"getPacientesDeTecnico",
+                    "data"=>Usuario::getMisPacientes($id),
+                );
+                break;
+
+            //PESTAÑA ADMIN INSERTAR PACIENTE ASIGNADO
+            case "nuevoPacienteAsignado":
+
+                $array = array(
+                    "success"=>true,
+                    "msg"=>"nuevoPacienteAsignado",
+                    "data"=>Usuario::nuevoPacienteAsignado($tecnico,$usuario),
                 );
                 break;
 

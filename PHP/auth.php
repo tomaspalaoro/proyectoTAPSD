@@ -1,32 +1,24 @@
 <?php
-
+include("variables.inc.php");
 session_start();
-//Comprueba si existe sesión, en caso negativo redirige a login
-if (!isset($_SESSION['sesion'])) {
-    header("Location: ./login.php");
 
-    session_destroy();
-    die();
-}
-
-/*
-
-<?php
-include("../Conexion.php");
-include("Tecnico_class.php");
-
-
-
-
-//Comprueba si existe sesión, en caso negativo redirige a login
-if (Tecnico::getToken("dmdm")) {
-    
-    
-    
+if (isset($_SESSION['sesion'])){
+    /*HAY SESION, DEVOLVER EMAIL*/
+    echo json_encode(array(
+        "data" => $_SESSION['sesion'],
+        "msg" => "auth:Hay sesion",
+        "success" => true
+    ));
+    //exit();
 }else{
-    header("Location: ./login.php");
-
-    die();
+    /*NO HAY SESION, DEVOLVER RUTA LOGIN*/
+    session_destroy();
+    echo json_encode(array(
+        "data" => ruta_login,
+        "msg" => "auth:No hay sesion",
+        "success" => false
+    ));
 }
-*/
+
+//if (Tecnico::getToken("dmdm")) {
 

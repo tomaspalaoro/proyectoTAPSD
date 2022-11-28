@@ -1,6 +1,6 @@
 <?php
 //include ("PHP/variables.inc.php");
-require("PHP/auth.php");
+/*require("PHP/auth.php");*/
 require "Conexion.php";
 
 
@@ -36,7 +36,7 @@ $paginaActual = 1;
     <!--Grid-->
     <div class="container-xl">
         <div class="table-responsive">
-         <div class="table-wrapper">
+            <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -59,7 +59,7 @@ $paginaActual = 1;
                     </tr>
                     </thead>
                     <tbody id="datosUsuarios">
-                        <tr>
+                    <tr>
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -160,7 +160,7 @@ $paginaActual = 1;
             </div>
         </div>
     </div>
-    <!-- TODO Delete Modal HTML -->
+    <!-- Delete Modal HTML -->
     <div id="borrarUsuarioModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -211,39 +211,47 @@ $paginaActual = 1;
             </div>
         </div>
     </div>
+    <!-- Edit Modal HTML -->
+    <div id="editarTecnicoModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="PHP/registrar.php" method="POST" id="form3">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Usuarios asignados</h4>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Asignados actuales</h5>
+                        <div id="_usuariosAsig">
+                            hola,hola,hola
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Introduce ID de paciente a añadir</label>
+                            <input type="email" class="form-control" id="_addEmailTecnico">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                        <button type="button" class="btn btn-info" id="editarTecnico" data-bs-dismiss="modal">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 <script>
     $.get("navbar_sidebar.html", function(data){
         /*CARGAR NAVBAR Y SIDEBAR*/
-        
+
         $("#navbarsidebar").html(data);
 
-        $("#nombreApellidos").html("<?php echo $_SESSION['sesion']; ?>");
-    });
-
-
-    //PASAR LA ID DEL MODAL
-    $('#editarUsuarioModal').on('shown.bs.modal', function (e) {
-        var modalId = $(e.relatedTarget).attr('data-id');
-        //$(".modal-body #idUsuario").val( modalId );
-        $("#editarUsuario").val( modalId );
-    });
-    $('#borrarUsuarioModal').on('shown.bs.modal', function (e) {
-        var modalId = $(e.relatedTarget).attr('data-id');
-        //$(".modal-body #idUsuario").val( modalId );
-        $("#borrarUsuario").val( modalId );
-    });
-
-    $('#editarTecnicoModal').on('shown.bs.modal', function (e) {
-        var modalId = $(e.relatedTarget).attr('data-id');
-        $("#editarUsuario").val( modalId );
-    });
-    $('#borrarTecnicoModal').on('shown.bs.modal', function (e) {
-        var modalId = $(e.relatedTarget).attr('data-id');
-        $("#borrarUsuario").val( modalId );
+        $("#nombreApellidos").html(sessionStorage.getItem("miSesion"));
     });
 </script>
 
 <script type="text/javascript" src="./JS/admin.js"></script>
+<script type="text/javascript" src="JS/sesion.js"></script>
 </body>
 </html>

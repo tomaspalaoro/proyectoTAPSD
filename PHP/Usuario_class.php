@@ -85,14 +85,13 @@
             }
         }
 
-        public static function getMisPacientes(){
+        public static function getMisPacientes($idTecnico){
 
             include("../Conexion.php");
             $pdo=Conexion::getInstance();
 
             try{
-                //TODO email del localstorage
-                $sql = "SELECT * FROM usuario u LEFT JOIN tecnico_usuario tu ON (tu.id_usuario = u.id) LEFT JOIN llamadas ll ON (ll.id_usuario = u.id) WHERE tu.id_tecnico = 'admin@admin'";
+                $sql = "SELECT * FROM usuario u LEFT JOIN tecnico_usuario tu ON (tu.id_usuario = u.id) LEFT JOIN llamadas ll ON (ll.id_usuario = u.id) WHERE tu.id_tecnico = '$idTecnico'";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
@@ -100,6 +99,24 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             }catch (Excepcion $e){
+                return $e->getMessage();
+            }
+        }
+
+        public static function nuevoPacienteAsignado($tecnico, $usuario){
+            include("../Conexion.php");
+            $pdo=Conexion::getInstance();
+            try {
+                if (empty($usuario))
+                    throw new Exception("Usuario vacio");
+
+                $sql = "INSERT INTO tecnico_usuario values ('$tecnico', '$usuario')";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                return "$usuario insertado";
+
+            } catch (Exception $e) {
                 return $e->getMessage();
             }
         }

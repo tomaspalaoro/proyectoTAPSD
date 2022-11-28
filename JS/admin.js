@@ -3,6 +3,16 @@ $( document ).ready(function() {
     readUsuarios();
     getAllTecnicos();
 
+    /***** USUARIOS ******/
+    //PASAR LA ID DEL MODAL
+    $('#editarUsuarioModal').on('shown.bs.modal', function (e) {
+        var modalId = $(e.relatedTarget).attr('data-id');
+        $("#editarUsuario").val( modalId );
+    });
+    $('#borrarUsuarioModal').on('shown.bs.modal', function (e) {
+        var modalId = $(e.relatedTarget).attr('data-id');
+        $("#borrarUsuario").val( modalId );
+    });
     //INSERT
     $("#insertarUsuario").click(function(){
 
@@ -73,7 +83,59 @@ $( document ).ready(function() {
         });
     });
 
+    /***** TECNICOS ******/
+    $('#editarTecnicoModal').on('shown.bs.modal', function (e) {
+        //id del tecnico seleccionado
+        var modalId = $(e.relatedTarget).attr('data-id');
+        $("#editarTecnico").val( modalId );
+        mostrarUsuariosAsignados(modalId);
+    });
+    /*$('#borrarTecnicoModal').on('shown.bs.modal', function (e) {
+        var modalId = $(e.relatedTarget).attr('data-id');
+        $("#borrarUsuario").val( modalId );
+    });*/
+
+    //INSERT
+    $("#editarTecnico").click(function(){
+        var request = $.ajax({
+            url: "./PHP/SW_Usuario.php",
+            method: "POST",
+            data: {
+                accion: "nuevoPacienteAsignado",
+                tecnico: $('#editarTecnico').val(),
+                usuario: $('#_addEmailTecnico').val()
+            },
+            dataType: "json"
+        });
+        console.log($('#editarTecnico').val()+" "+$('#_addEmailTecnico').val());
+
+        /*request.done(function( request ) {
+            readUsuarios();
+        })*/;
+    });
+
 });
+
+function mostrarUsuariosAsignados(idTecnico){
+    var request = $.ajax({
+        url: "./PHP/SW_Usuario.php",
+        method: "POST",
+        data: {
+            accion: "getPacientesDeTecnico",
+            id: idTecnico,
+        },
+        dataType: "json"
+    });
+
+    request.done(function( request ) {
+
+        $("#_usuariosAsig").empty();
+
+        for(var i=0; i<request.data.length; i++){
+            $("#_usuariosAsig").append(request.data[i].nombre+",");
+        }
+    });
+}
 
 function readUsuarios() {
     
