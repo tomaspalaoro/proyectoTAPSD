@@ -7,6 +7,7 @@
     $id_usuario = isset($_POST['id_usuario'])? $_POST['id_usuario']:null;
     $hora_inicio = isset($_POST['hora_inicio'])? $_POST['hora_inicio']:null;
     $filters = isset($_POST["filters"])? $_POST["filters"]:[];
+    $arrLlamada = isset($_POST["data"])? $_POST["data"]:[];
 
     //Array Inicial
     $array = array(
@@ -35,6 +36,21 @@
                     "msg"=>"getLlamada especifica",
                     "data"=>Llamada_class::getLlamada($id_tecnico,$id_usuario,$hora_inicio),
                 );
+                break;
+            case "insertLlamada":
+                $llamada = new Llamada_class($arrLlamada['id_tecnico'], $arrLlamada['id_usuario'], $arrLlamada['titulo'],
+                    $arrLlamada['observaciones'], $arrLlamada['duracion'], $arrLlamada['hora_inicio'], $arrLlamada['hora_fin']);
+                if ($llamada->crearLlamada()){
+                    $array = array(
+                        "success"=>true,
+                        "msg"=>"Insert llamada correctamente",
+                    );
+                } else {
+                    $array = array(
+                        "success"=>false,
+                        "msg"=>"Error Insert llamada",
+                    );
+                }
                 break;
             default:
                 // JSON acción no soportada
