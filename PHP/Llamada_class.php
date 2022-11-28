@@ -10,22 +10,27 @@ class Llamada_class {
     private $HORA_FIN;
 
     //Constructor
-    public function __construct($id_tecnico=null, $id_usuario=null, $hora_inicio=null){
+    public function __construct($id_tecnico=null, $id_usuario=null, $titulo=null, $observaciones=null,
+                                $duracion=null, $hora_inicio=null, $hora_fin=null){
         $this->ID_TECNICO=$id_tecnico;
         $this->ID_USUARIO=$id_usuario;
+        $this->TITULO=$titulo;
+        $this->OBSERVACIONES=$observaciones;
+        $this->DURACION=$duracion;
         $this->HORA_INICIO=$hora_inicio;
+        $this->HORA_FIN=$hora_fin;
     }
 
     //Crear Llamadas
     public function crearLlamada(){
         //Conexion BD
-        include("../Conexion.php");
         $pdo=Conexion::getInstance();
         try{
-            $sql="INSERT INTO llamadas(id_tecnico, id_usuario, hora_inicio) 
-                VALUES ('$ID_TECNICO','$ID_USUARIO','$HORA_INICIO')";
+            $sql="INSERT INTO llamadas VALUES ($ID_TECNICO,$ID_USUARIO,$TITULO
+                    ,$OBSERVACIONES,$DURACION,$HORA_INICIO,$HORA_FIN)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
+            return $stmt->execute($sql);
         }catch (Excepcion $e){
             throw new Excepcion($e->getMessage(), 1);
         }

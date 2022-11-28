@@ -1,7 +1,6 @@
 $(document).ready(function () {
     getLlamadas();
-    console.log("ready")
-})
+});
 
 function getLlamadas(){
     var request = $.ajax({

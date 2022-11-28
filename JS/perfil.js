@@ -48,6 +48,33 @@ $( document ).ready(function() {
             //TODO $("#_fecha").val(fecha);
         });
     }
+
+    //INSERT
+    $("#insertarLlamada").click(function(){
+
+        console.log("Entra Llamada");
+
+        var request = $.ajax({
+            url: "./PHP/SW_Llamada.php",
+            method: "POST",
+            data: {
+                accion: "insertLlamada",
+                id_tecnico: $('#regLlamadaTecnico').val(),
+                id_usuario: $('#regLlamadaUsuario').val(),
+                titulo: $('#regLlamadaTitulo').val(),
+                observaciones: $('#regLlamadaObserv').val(),
+                duracion: $('#regLlamadaDuracion').val(),
+                hora_inicio: $('#regLlamadaHInicio').val(),
+                hora_fin: $('#regLlamadaHFin').val()
+            },
+            dataType: "json"
+        });
+
+        request.done(function( request ) {
+            console.log("Insert Llamada perfil")
+        });
+
+    });
 });
 
 /**
