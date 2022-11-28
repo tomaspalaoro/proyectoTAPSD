@@ -102,6 +102,21 @@ function getGET()
     }
 }
 
+function crearLlamada(){
+    var request = $.ajax({
+        url: "./PHP/SW_Llamada.php",
+        method: "POST",
+        data: {
+            accion: "get",
+        },
+        dataType: "json"
+    });
+
+    request.done(function ( request ){
+
+    });
+}
+
 function llamada(){
     const date = new Date();
     console.log(" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds())

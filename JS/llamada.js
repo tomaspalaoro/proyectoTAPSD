@@ -24,7 +24,7 @@ function getLlamadas(){
             ultimoRg.append("<td>"+ request.data[i].hora_inicio + "</td>");
             ultimoRg.append("<td>"+ request.data[i].duracion + "</td>");
             ultimoRg.append("<td>")
-            $("#datosLlamadas tr:last td:last").append('<a href="#infoLlamadaModal" class="read" data-id="' + request.data[i].observaciones + '" data-bs-toggle="modal" data-target="#myModall" >Ver Mas</a></td></tr>');
+            $("#datosLlamadas tr:last td:last").append('<a href="#infoLlamadaModal" class="read" data-bs-toggle="modal" data-target="#myModal" >Ver Mas</a></td></tr>');
         }
     });
 }
